@@ -1,5 +1,6 @@
 ---
 author: Veronika Boškova and Venelin Mitov
+level: Beginner
 ---
 
 
