@@ -1,5 +1,5 @@
 ---
-author: Veronika Boškova and Venelin Mitov
+author: Veronika Bošková,Venelin Mitov
 level: Beginner
 ---
 
