@@ -1,12 +1,12 @@
 \documentclass[11pt]{article}
 
 \input{preamble}
-\addbibresource{master_refs.bib}
+\addbibresource{master-refs.bib}
 
 
 \usepackage{tikz}
 
-\setlength{\topmargin}{-0.4in}
+\setlength{\topmargin}{-0.0.5\textwidth}
 \setlength{\headheight}{14.5pt}
 \pagestyle{fancy}
 
@@ -123,36 +123,36 @@ Begin by starting up the BEAUti program.
 \bigskip
 \subsubsection{Installing BEAST 2 Plug-Ins}
 
-Since we will be using the birth-death skyline model \citep{Stadler2013}, we need to make sure it is available in BEAUti. It is not one of the default models but rather an add-on (also called a plug-in or package). You only need to install a BEAST 2 package once. Thus, if you close BEAUti, you do not have to load \mi{BDSKY} the next time you open the program. However, it is worth checking the package manager for updates to plug-ins, particularly if you update your version of BEAST 2.
+Since we will be using the birth-death skyline model \citep{Stadler2013}, we need to make sure it is available in BEAUti. It is not one of the default models but rather an add-on (also called a plug-in or package). You only need to install a BEAST 2 package once. Thus, if you close BEAUti, you do not have to load \textbf{BDSKY} the next time you open the program. However, it is worth checking the package manager for updates to plug-ins, particularly if you update your version of BEAST 2.
 
-\mi{BDSKY} model was used in the previous tutorial, so you should already have it up and running in BEAUti. Also, we do not expect that there were any updates to the version you loaded just few hours ago, so you can skip the following few lines and go directly to section \ref{Importing alignment}. However, in case you have not managed to get it running yet, follow these instructions to install the \mi{BDSKY} add-on. 
+\textbf{BDSKY} model was used in the previous tutorial, so you should already have it up and running in BEAUti. Also, we do not expect that there were any updates to the version you loaded just few hours ago, so you can skip the following few lines and go directly to section \ref{Importing alignment}. However, in case you have not managed to get it running yet, follow these instructions to install the \textbf{BDSKY} add-on. 
 
 \begin{framed}
-Open the \mi{BEAST 2 Package Manager} by navigating to \mi{File\textrightarrow Manage Packages}. [Figure \ref{packageManage1}]
+Open the \textbf{BEAST 2 Package Manager} by navigating to \textbf{File\textrightarrow Manage Packages}. [Figure \ref{packageManage1}]
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=5in]{figures/beast2_package_manager_opening.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/beast2_package_manager_opening.png}}
 \caption{\small Finding the BEAST2 Package Manager.}
 \label{packageManage1}
 \end{figure}
 
 \begin{framed}
-Install the \mi{BDSKY} package by selecting it and clicking the \mi{Install/Upgrade} button. [Figure \ref{packageManage2}]
+Install the \textbf{BDSKY} package by selecting it and clicking the \textbf{Install/Upgrade} button. [Figure \ref{packageManage2}]
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=5in]{figures/beast2_package_manager.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/beast2_package_manager.png}}
 \caption{\small The BEAST2 Package Manager.}
 \label{packageManage2}
 \end{figure}
 
-After the installation of an add-on, the program is on your computer, but BEAUti is unable to load the template files for the newly installed model unless it is restarted. So, let's restart BEAUti to make sure we have \mi{BDSKY} model at hand.
+After the installation of an add-on, the program is on your computer, but BEAUti is unable to load the template files for the newly installed model unless it is restarted. So, let's restart BEAUti to make sure we have \textbf{BDSKY} model at hand.
 
 \begin{framed}
-Close the \mi{BEAST 2 Package Manager} and {\textcolor{red}{\underline{\bf restart BEAUti}}} to fully load the \mi{BDSKY} package.
+Close the \textbf{BEAST 2 Package Manager} and {\textcolor{red}{\underline{\bf restart BEAUti}}} to fully load the \textbf{BDSKY} package.
 \end{framed}
 
 
@@ -164,17 +164,17 @@ Close the \mi{BEAST 2 Package Manager} and {\textcolor{red}{\underline{\bf resta
 We will first analyse the alignment of sequences sampled through time (heterochronous sequences). 
  
 \begin{framed}
-In the \mi{Partitions} panel, import the nexus file with the alignment by navigating to \mi{File\textrightarrow Import Alignment} in the menu [Figure \ref{importAlignment}] and then finding the file called \newline \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_heterochronous.nexus}  file on your computer.
+In the \textbf{Partitions} panel, import the nexus file with the alignment by navigating to \textbf{File\textrightarrow Import Alignment} in the menu [Figure \ref{importAlignment}] and then finding the file called \newline \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_heterochronous.nexus}  file on your computer.
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=5in]{figures/beast2_import_alignment.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/beast2_import_alignment.png}}
 \caption{\small Importing alignment into BEAUti.}
 \label{importAlignment}
 \end{figure}
 
-You can view the alignment by double-clicking on the name of the alignment in BEAUti. Since we only have one partition there is nothing more we can do in the \mi{Partitions} panel and proceed to specifying the tip dates. 
+You can view the alignment by double-clicking on the name of the alignment in BEAUti. Since we only have one partition there is nothing more we can do in the \textbf{Partitions} panel and proceed to specifying the tip dates. 
 
 
 
@@ -184,34 +184,34 @@ You can view the alignment by double-clicking on the name of the alignment in BE
 The heterochronous dataset contains the information on when the sequences were sampled. We want to use this information to specify the tip dates in BEAUti. 
 
 \begin{framed}
-In the \mi{Tip Dates} panel, click the \mi{Use tip dates} option. 
+In the \textbf{Tip Dates} panel, click the \textbf{Use tip dates} option. 
 \end{framed}
 
-We want all the tree information to be specified for units of time in ``years'', thus we leave the \mi{Dates specified as} option set to default ``year''. Also we want the time to flow forward in time in the tree, therefore, we keep to default option of tip dates being specified as ``Since some time in the past'' [Figure \ref{timeUnitsAndFlow}].
+We want all the tree information to be specified for units of time in ``years'', thus we leave the \textbf{Dates specified as} option set to default ``year''. Also we want the time to flow forward in time in the tree, therefore, we keep to default option of tip dates being specified as ``Since some time in the past'' [Figure \ref{timeUnitsAndFlow}].
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=5in]{figures/beast2_time_specification.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/beast2_time_specification.png}}
 \caption{\small Specifying time units and direction of time flow.}
 \label{timeUnitsAndFlow}
 \end{figure}
 
-You could specify the tip dates by hand, by clicking for each row (i.e. for each sequence) into the \mi{Date} column and typing the date information in for each sequence in turn. However, this is a laborious and error-prone procedure and can take a long time to finish. Fortunately, we can use BEAUti, to read off the dates from the sequence names for us. Each sequence is named such that the expression after the last underscore character (``\_'') contains the sampling date information. BEAUti can search for this expression to extract the sequence date.
+You could specify the tip dates by hand, by clicking for each row (i.e. for each sequence) into the \textbf{Date} column and typing the date information in for each sequence in turn. However, this is a laborious and error-prone procedure and can take a long time to finish. Fortunately, we can use BEAUti, to read off the dates from the sequence names for us. Each sequence is named such that the expression after the last underscore character (``\_'') contains the sampling date information. BEAUti can search for this expression to extract the sequence date.
 
 \begin{framed}
-Press the \mi{Guess} button. A window will appear where you can specify how BEAUti can find the date of sampling of each sequence. [Figure \ref{guessDates}]
+Press the \textbf{Guess} button. A window will appear where you can specify how BEAUti can find the date of sampling of each sequence. [Figure \ref{guessDates}]
 
-Select \mi{use everything} and specify \mi{after last} \_.
+Select \textbf{use everything} and specify \textbf{after last} \_.
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=5in]{figures/beast2_guess_dates.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/beast2_guess_dates.png}}
 \caption{\small Specifying tip dates.}
 \label{guessDates}
 \end{figure}
 
-You should now see that the tip ages have been filled in for all of the taxa and that the \mi{Date} columns shows a number in form 2009.xyz and the \mi{Height} column shows the number in form 0.abc (the height of the tip from present time, where present is 0.0).
+You should now see that the tip ages have been filled in for all of the taxa and that the \textbf{Date} columns shows a number in form 2009.xyz and the \textbf{Height} column shows the number in form 0.abc (the height of the tip from present time, where present is 0.0).
 
 Now we are done with the data specification and we are about to start specifying models and priors for the model parameters. 
 
@@ -221,7 +221,7 @@ Now we are done with the data specification and we are about to start specifying
 \subsubsection{Specifying the Site Model}
 
 \begin{framed}
-Navigate to the \mi{Site Model} panel, where we can choose the model of nucleotide evolution that we want to assume to underly our dataset. 
+Navigate to the \textbf{Site Model} panel, where we can choose the model of nucleotide evolution that we want to assume to underly our dataset. 
 \end{framed}
 
 Our dataset is made of nucleotide sequences. There are four models of nucleotide evolution available in BEAST2: JC69, HKY, TN93 and GTR. Most of these models were discussed in the lecture on substitution models. Remember that the JC69 model was the simplest evolutionary model. All the substitutions are assumed to happen with the same rate and all the bases are assumed to have identical frequencies, i.e. each base A, C, G and T is assumed to have equilibrium frequency of 0.25. In HKY model, the rate of transitions A$\leftrightarrow$G and C$\leftrightarrow$T is allowed to be different from the rate of transversions A$\leftrightarrow$C, G$\leftrightarrow$T. Furthermore, the frequency of each base can be either ``Estimated'', ``Empirical'' or ``All Equal''. When we set the frequencies to ``Estimated'', the frequency of each base will be co-estimated as a parameter during the BEAST run. If we use ``Empirical'', base frequencies will be set to the frequencies of each base found in the alignment. Finally, if set to ``All Equal'', the base frequencies will be set to 0.25. The TN93 model is slightly more complicated than HKY, by allowing for different rates of A$\leftrightarrow$G and C$\leftrightarrow$T transitions. Finally, the GTR model is the most general model, with 10 parameters (and can be re-parameterized to only contain 9 parameters). 
@@ -248,12 +248,12 @@ Once again, a proper model comparison, i.e. comparing a model with no to a model
 Let us therefore choose the HKY model with 4 gamma rate categories for the substitution rate. 
 
 \begin{framed}
-Change the \mi{Gamma Category Count} to 4, tick the estimate box next to the \mi{Shape} parameter of the Gamma distribution and set the \mi{Subst Model} to \mi{HKY}. [Figure \ref{substitutionModel}] 
+Change the \textbf{Gamma Category Count} to 4, tick the estimate box next to the \textbf{Shape} parameter of the Gamma distribution and set the \textbf{Subst Model} to \textbf{HKY}. [Figure \ref{substitutionModel}] 
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=5in]{figures/beast2_substitution_model.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/beast2_substitution_model.png}}
 \caption{\small Specifying substitution model.}
 \label{substitutionModel}
 \end{figure}
@@ -267,20 +267,20 @@ Notice also, that we leave the substitution rate fixed to 1.0 and do not estimat
 \subsubsection{Specifying the Clock Model}
 
 \begin{framed}
-Navigate to the \mi{Clock Model} panel.
+Navigate to the \textbf{Clock Model} panel.
 \end{framed}
 
-Four different clock models are available in BEAST 2, allowing us to specify lineage-specific substitution rate variation. The default model in BEAUti is the \mi{Strict Clock} with a fixed substitution rate equal to 1. The other three models relax the assumption of a constant substitution rate. The \mi{Relaxed Clock Log Normal} allows for the substitution rates associated with each branch to be independently drawn from a single, discretized log normal distribution (\cite{drummond06}). Under the \mi{Relaxed Clock Exponential} model, the rates associated with each branch are drawn from an exponential distribution (\cite{drummond06}). Both of these models are uncorrelated relaxed clock models. The log normal distribution has the advantage that one can estimate its variance, which reflects the extent to which the molecular clock needs to be relaxed. In both models, BEAUti sets by default the \mi{Number Of Discrete Rates} to -1. This means that the number of bins that the distribution is divided into is equal to the number of branches. The last available model is the \mi{Random Local Clock} which averages over all possible local clock models (\cite{drummond10}). 
+Four different clock models are available in BEAST 2, allowing us to specify lineage-specific substitution rate variation. The default model in BEAUti is the \textbf{Strict Clock} with a fixed substitution rate equal to 1. The other three models relax the assumption of a constant substitution rate. The \textbf{Relaxed Clock Log Normal} allows for the substitution rates associated with each branch to be independently drawn from a single, discretized log normal distribution (\cite{drummond06}). Under the \textbf{Relaxed Clock Exponential} model, the rates associated with each branch are drawn from an exponential distribution (\cite{drummond06}). Both of these models are uncorrelated relaxed clock models. The log normal distribution has the advantage that one can estimate its variance, which reflects the extent to which the molecular clock needs to be relaxed. In both models, BEAUti sets by default the \textbf{Number Of Discrete Rates} to -1. This means that the number of bins that the distribution is divided into is equal to the number of branches. The last available model is the \textbf{Random Local Clock} which averages over all possible local clock models (\cite{drummond10}). 
 
 \begin{framed}
 {\bf QUESTION: Which clock model may be the most appropriate for our dataset and why?} 
 \end{framed}
 
-Since we are observing the sequence data from a single epidemic of H3N2 virus in humans in a single location (south-west of USA), we do not have a reason to assume different substitution rates for different lineages. Thus, the most straightforward option is to choose the default \mi{Strict Clock} model [Figure \ref{clockModel}]. Note however, that a rigorous model comparison would be the best way to proceed with the choice of the clock model.
+Since we are observing the sequence data from a single epidemic of H3N2 virus in humans in a single location (south-west of USA), we do not have a reason to assume different substitution rates for different lineages. Thus, the most straightforward option is to choose the default \textbf{Strict Clock} model [Figure \ref{clockModel}]. Note however, that a rigorous model comparison would be the best way to proceed with the choice of the clock model.
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=5in]{figures/beast2_clock_model.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/beast2_clock_model.png}}
 \caption{\small Specifying the clock model.}
 \label{clockModel}
 \end{figure}
@@ -291,7 +291,7 @@ Since we are observing the sequence data from a single epidemic of H3N2 virus in
 \subsubsection{Selecting Priors}
 
 \begin{framed}
-Navigate to the \mi{Priors} panel.
+Navigate to the \textbf{Priors} panel.
 \end{framed}
 
 %What prior would you set for the dimension? We know the influenza epidemic starts up with one infection, rapidly increases in number of infecteds to eventually decline. 1 dimension is not sufficient. 
@@ -299,40 +299,40 @@ Navigate to the \mi{Priors} panel.
 Since the dynamics of influenza virus is likely to change due to the depletion of susceptible population and/or presence of the resistant individuals, we choose the birth-death skyline model of population dynamics with 5 time intervals for R0, to capture this likely change of dynamics over time. R0, called basic reproductive number, is the ratio of the birth (or speciation) rate and the death (or extinction) rate. It is an important variable for the study of infectious diseases, since it defines how many individuals can get infected from a single infected individual in a completely susceptible population in the course of his/her infection. In other words, it tells us how quickly is the disease spreading in a population. R0 for any infection is very rarely above 10, so we set this as the upper value for R0 in our analysis.
 
 \begin{framed}
-For the \mi{Tree} model, select the option \mi{Birth Death Skyline Serial}. 
+For the \textbf{Tree} model, select the option \textbf{Birth Death Skyline Serial}. 
 
-Then, click in the arrow to the left from \mi{R0} to open all the options for R0 settings [Figure \ref{treePrior}]. Leave all the settings to the default, since it specifies not too strong prior on R0 around 1. This is exactly what we want. 
+Then, click in the arrow to the left from \textbf{R0} to open all the options for R0 settings [Figure \ref{treePrior}]. Leave all the settings to the default, since it specifies not too strong prior on R0 around 1. This is exactly what we want. 
 
-Then, click on the window where it says \mi{initial = [2.0] [0.0, Infinity]}. A pop-up window will show up [Figure \ref{R0Prior}].
+Then, click on the window where it says \textbf{initial = [2.0] [0.0, Infinity]}. A pop-up window will show up [Figure \ref{R0Prior}].
 
-In the pop-up window change the \mi{Upper}, the upper limit of the prior distribution, from Infinity to 10 and the \mi{Dimension} of the R0 from 10 to 5 and click \mi{OK}.
+In the pop-up window change the \textbf{Upper}, the upper limit of the prior distribution, from Infinity to 10 and the \textbf{Dimension} of the R0 from 10 to 5 and click \textbf{OK}.
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=7in]{figures/beast2_prior_R0.png}}
+\fbox{\includegraphics{figures/beast2_prior_R0.png}}
 \caption{\small Specifying the tree prior.}
 \label{treePrior}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=4in]{figures/beast2_prior_R0dimension.png}}
+\fbox{\includegraphics[width=0.5\textwidth]{figures/beast2_prior_R0dimension.png}}
 \caption{\small Specifying the R0 prior.}
 \label{R0Prior}
 \end{figure}
 
-Notice that the pop-up window allows one to specify not only the \mi{Dimension} but also the \mi{Minordimension}. If the parameter is specified as a vector of $n$ entries, we only use the \mi{Dimension} with input $n$. If the parameter is specified as an n x m matrix, we then use the \mi{Minordimension} to specify the number of columns (m) the parameter is split into. In the birth-death skyline model, we use the parameter vector only, and thus the \mi{Minordimension} always stays specified as 1.
+Notice that the pop-up window allows one to specify not only the \textbf{Dimension} but also the \textbf{Minordimension}. If the parameter is specified as a vector of $n$ entries, we only use the \textbf{Dimension} with input $n$. If the parameter is specified as an n x m matrix, we then use the \textbf{Minordimension} to specify the number of columns (m) the parameter is split into. In the birth-death skyline model, we use the parameter vector only, and thus the \textbf{Minordimension} always stays specified as 1.
 
-After we have specified the prior for R0, the next prior that needs our attention is the \mi{becomeUninfectiousRate}. This specifies, how quickly does a person infected with influenza recover. From our personal experience, we would say, it takes around one week to 10 days from the infection of the person to the recovery. This translates to the become uninfectious rate of $365/10=36.5$ to $365/7\approx 52.14$ per year. Let us set the prior for become uninfectious rate accordingly.
+After we have specified the prior for R0, the next prior that needs our attention is the \textbf{becomeUninfectiousRate}. This specifies, how quickly does a person infected with influenza recover. From our personal experience, we would say, it takes around one week to 10 days from the infection of the person to the recovery. This translates to the become uninfectious rate of $365/10=36.5$ to $365/7\approx 52.14$ per year. Let us set the prior for become uninfectious rate accordingly.
 
 \begin{framed}
- Click on the arrow next to the \mi{becomeUninfectiousRate} and change the value for the \mi{M} (mean) of the default log normal distribution to 52 and tick the box \mi{Mean In Real Space} to specify the mean of the distribution in real space instead of a log space [Figure \ref{becomeUninfectiousPrior}].
+ Click on the arrow next to the \textbf{becomeUninfectiousRate} and change the value for the \textbf{M} (mean) of the default log normal distribution to 52 and tick the box \textbf{Mean In Real Space} to specify the mean of the distribution in real space instead of a log space [Figure \ref{becomeUninfectiousPrior}].
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=7in]{figures/beast2_prior_becomeUninfectious.png}}
+\fbox{\includegraphics{figures/beast2_prior_becomeUninfectious.png}}
 \caption{\small Specifying the become uninfectious prior.}
 \label{becomeUninfectiousPrior}
 \end{figure}
@@ -350,18 +350,18 @@ Now consider the following information: Influenza virus is an RNA virus \citep{k
 \begin{framed}
 {\bf QUESTION: Did you change your best guess, for the substitution rate appropriate for RNA viruses? What would it be? How would you specify the prior?} 
 \end{framed}
-% For circulating influenza viruses in humans, which were under selection pressure, the fixation rates were estimated to be 3.7 × 10?3 and 5.72 × 10?3 nucleotide substitutions per site per year for the HA genes of influenza A(H3N2) viruses; these rates were based on the estimated accumulation of adaptive substitutions in human influenza A(H3N2) viruses during the periods 1983 to 1997 and 1992 to 2005, respectively (22, 23).
+% For circulating influenza viruses in humans, which were under selection pressure, the fixation rates were estimated to be 3.7 * 10?3 and 5.72 * 10?3 nucleotide substitutions per site per year for the HA genes of influenza A(H3N2) viruses; these rates were based on the estimated accumulation of adaptive substitutions in human influenza A(H3N2) viruses during the periods 1983 to 1997 and 1992 to 2005, respectively (22, 23).
 %Newly Emerging Mutations in the Matrix Genes of the Human Influenza A(H1N1)pdm09 and A(H3N2) Viruses Reduce the Detection Sensitivity of Real-Time Reverse Transcription-PCR
 
 Our best guess would be to set the prior distribution peaked around $10^{-3}$ substitutions per site per year.
 
 \begin{framed}
-Click on the arrow next to the \mi{clockRate} and change the value for the \mi{M} (mean) of the default log normal distribution to 0.001 and tick the box \mi{Mean In Real Space} [Figure \ref{clockRatePrior}].
+Click on the arrow next to the \textbf{clockRate} and change the value for the \textbf{M} (mean) of the default log normal distribution to 0.001 and tick the box \textbf{Mean In Real Space} [Figure \ref{clockRatePrior}].
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=7in]{figures/beast2_prior_clockRate.png}}
+\fbox{\includegraphics{figures/beast2_prior_clockRate.png}}
 \caption{\small Specifying the clock rate prior.}
 \label{clockRatePrior}
 \end{figure}
@@ -371,7 +371,7 @@ We also need to estimate the gamma shape parameter, which governs the shape of t
  
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=7in]{figures/beast2_prior_gammaShape.png}}
+\fbox{\includegraphics{figures/beast2_prior_gammaShape.png}}
 \caption{\small Specifying the gamma shape prior.}
 \label{gammaShapeprior}
 \end{figure}
@@ -382,7 +382,7 @@ We do not have any prior information on transition-transversion ratio besides th
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=7in]{figures/beast2_prior_kappa.png}}
+\fbox{\includegraphics{figures/beast2_prior_kappa.png}}
 \caption{\small Specifying the kappa (transition/transversion ratio) prior.}
 \label{kappaPrior}
 \end{figure}
@@ -397,31 +397,31 @@ For the next parameter, origin, we ask ourselves whether there is any reasonable
 The data span a period of 3 months and are only coming from a limited area; thus, it would be unreasonable to assume that a single season flu epidemic would last longer than a few months. The best guess for the origin parameter prior we could make is  therefore on the order of at least 3-4, up to 6 months. We set the prior according to this expectation.
 
 \begin{framed}
-Click on the arrow next to the \mi{origin} and change the prior distribution from \mi{Uniform} to \mi{Gamma} with Alpha parameter set to 0.5 and Beta parameter set to 2.0 [Figure \ref{originPrior}].
+Click on the arrow next to the \textbf{origin} and change the prior distribution from \textbf{Uniform} to \textbf{Gamma} with Alpha parameter set to 0.5 and Beta parameter set to 2.0 [Figure \ref{originPrior}].
 %
-%Make sure that the \mi{Lower} is set to 0.
+%Make sure that the \textbf{Lower} is set to 0.
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=7in]{figures/beast2_prior_origin.png}}
+\fbox{\includegraphics{figures/beast2_prior_origin.png}}
 \caption{\small Specifying the origin prior.}
 \label{originPrior}
 \end{figure}
 
 % If this is used, problems with initialisation
 %\newpage
-%Furthermore, the origin value that we expect is positive and most likely not larger than 1. We reflect this in the \mi{origin} specification as follows:
+%Furthermore, the origin value that we expect is positive and most likely not larger than 1. We reflect this in the \textbf{origin} specification as follows:
 %
 %\begin{framed}
-%Click on the window where it says \mi{initial = [100.0] [0.0, Infinity]}. A pop-up window will show up [Figure \ref{originPriorPop}].
+%Click on the window where it says \textbf{initial = [100.0] [0.0, Infinity]}. A pop-up window will show up [Figure \ref{originPriorPop}].
 %
-%In the pop-up window make sure that the \mi{Lower}, the lower limit of the prior distribution is set to 0 (do not allow for negative values) and set the \mi{Value} of the origin from 100.0 to 1.0 and click \mi{OK}.
+%In the pop-up window make sure that the \textbf{Lower}, the lower limit of the prior distribution is set to 0 (do not allow for negative values) and set the \textbf{Value} of the origin from 100.0 to 1.0 and click \textbf{OK}.
 %\end{framed}
 %
 %\begin{figure}[h!]
 %\centering
-%\fbox{\includegraphics[width=4in]{figures/beast2_prior_originpop.png}}
+%\fbox{\includegraphics[width=0.5\textwidth]{figures/beast2_prior_originpop.png}}
 %\caption{\small Specifying the origin lower limit and starting value.}
 %\label{originPriorPop}
 %\end{figure}
@@ -430,16 +430,16 @@ Click on the arrow next to the \mi{origin} and change the prior distribution fro
 Lastly, for the sampling proportion, we know that we certainly did not sample every single infected individual. Therefore, setting a prior around 1 would not be reasonable. Actually, it is more reasonable to usually expect only a proportion of less than 0.1 of all flu cases to be sampled. Here, we specify something on the order of $10^{-3}$.
 
 \begin{framed}
-Click on the arrow next to the \mi{samplingProportion} and change the distribution from \mi{Beta} to \mi{Log Normal}. 
+Click on the arrow next to the \textbf{samplingProportion} and change the distribution from \textbf{Beta} to \textbf{Log Normal}. 
 
-Next, change the value for the \mi{M} (mean) to 0.001 and tick the box \mi{Mean In Real Space} [Figure \ref{samplingProportionPrior}].
+Next, change the value for the \textbf{M} (mean) to 0.001 and tick the box \textbf{Mean In Real Space} [Figure \ref{samplingProportionPrior}].
 
-Also, make sure that the \mi{Lower} is set to 0.0 and the \mi{Upper} is set to 1.0.
+Also, make sure that the \textbf{Lower} is set to 0.0 and the \textbf{Upper} is set to 1.0.
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=7in]{figures/beast2_prior_samplingProportion.png}}
+\fbox{\includegraphics{figures/beast2_prior_samplingProportion.png}}
 \caption{\small Specifying the sampling proportion prior.}
 \label{samplingProportionPrior}
 \end{figure}
@@ -450,21 +450,21 @@ Also, make sure that the \mi{Lower} is set to 0.0 and the \mi{Upper} is set to 1
 \subsubsection{MCMC}
 
 \begin{framed}
-Navigate to the \mi{MCMC} panel.
+Navigate to the \textbf{MCMC} panel.
 \end{framed}
 
 We want to shorten the chain length, in order for it to run in a reasonable time and we want to decrease the tree sampling frequency.
 
 \begin{framed}
-Change the \mi{Chain Length} from 10'000'000 to 5'000'000.
+Change the \textbf{Chain Length} from 10'000'000 to 5'000'000.
 
-Click on the arrow next to the \mi{tree log} and set the \mi{Log Every} to 100'000 [Figure \ref{mcmc}].
+Click on the arrow next to the \textbf{tree log} and set the \textbf{Log Every} to 100'000 [Figure \ref{mcmc}].
 \end{framed}
 
 %mcmc chain
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=5in]{figures/beast2_mcmc.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/beast2_mcmc.png}}
 \caption{\small Specifying the MCMC properties.}
 \label{mcmc}
 \end{figure}
@@ -472,7 +472,7 @@ Click on the arrow next to the \mi{tree log} and set the \mi{Log Every} to 100'0
 Now, all the specifications are done. We want to save and run the XML.
 
 \begin{framed}
-Save the XML file as \mi{Heterochronous.xml}
+Save the XML file as \textbf{Heterochronous.xml}
 \end{framed}
 
 
@@ -482,7 +482,7 @@ Save the XML file as \mi{Heterochronous.xml}
 \begin{framed}
 Within BEAST, specify the file Heterochronous.xml. %and set the random seed to 1 so that you can compare your results to the example solution.
 
-Hit \mi{Run} to start the analysis.
+Hit \textbf{Run} to start the analysis.
 \end{framed}
 
 The run should take about 15-20 minutes. While waiting for your results, you can start preparing the XML file for the homochronous data as specified in section \ref{homochronous}.
@@ -493,7 +493,7 @@ The run should take about 15-20 minutes. While waiting for your results, you can
 \subsubsection{Analyzing the results}
 
 \begin{framed}
-Load the file into \mi{Tracer} to check mixing and the parameter estimates. 
+Load the file into \textbf{Tracer} to check mixing and the parameter estimates. 
 \end{framed}
 
 First thing you may notice is that most of the parameters do have low ESS (effective sample size below 200, marked in red). This is because our chain did not run long enough. However, the estimates we obtained with a chain of length 5'000'000 are very similar to those obtained with a chain of length 30'000'000.
@@ -518,7 +518,7 @@ Browse the parameter estimates and reflect on them with respect to the priors we
 
 We could also use the homochronous data to investigate the dynamics of the H3N2 spread in California in 2009. We use the 29 sequences from April 28, 2009 to investigate whether this is possible. 
 
-Follow the same procedure as for the heterochronous sampling starting at section \ref{Importing alignment}. Now, however, use the alignment file called \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_homochronous.nexus} and use the \mi{Birth Death Skyline Contemporary} model.
+Follow the same procedure as for the heterochronous sampling starting at section \ref{Importing alignment}. Now, however, use the alignment file called \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_homochronous.nexus} and use the \textbf{Birth Death Skyline Contemporary} model.
 
 
 
@@ -539,12 +539,12 @@ Notice the values of the substitution rate estimates. From literature, one can r
 Another way to see that the homochronous sampling does not allow for the estimation of the clock rate is to observe a very strong negative correlation of the clock rate with the tree height.
 
 \begin{framed}
-In \mi{Tracer} click on the \mi{Joint Marginal} panel, select the \mi{TreeHeight} and the \mi{clockRate} simultaneously, and uncheck the \mi{Sample only} box below the graphics [Figure \ref{clockRatetreeHeightCorrelation}].
+In \textbf{Tracer} click on the \textbf{Joint Marginal} panel, select the \textbf{TreeHeight} and the \textbf{clockRate} simultaneously, and uncheck the \textbf{Sample only} box below the graphics [Figure \ref{clockRatetreeHeightCorrelation}].
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=6in]{figures/tracer_homochronous_treeHeightclockRatecorrelation.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/tracer_homochronous_treeHeightclockRatecorrelation.png}}
 \caption{\small Clock rate and tree height correlation in homochronous data.}
 \label{clockRatetreeHeightCorrelation}
 \end{figure}
@@ -556,46 +556,46 @@ The correlation between the tree height and the clock rate is obvious: the talle
 \newpage
 \subsubsection{Creating Taxon Sets}
 
-We will use the results from the heterochronous data, to find out what a good estimate for the tree height of these homochronous samples is. For this aim, we first create an MCC (maximum clade credibility) tree in the \mi{TreeAnnotator} and then check with \mi{FigTree} what the estimate of the tMRCA (time to the most recent common ancestor) of the samples from April 28, 2009 is.
+We will use the results from the heterochronous data, to find out what a good estimate for the tree height of these homochronous samples is. For this aim, we first create an MCC (maximum clade credibility) tree in the \textbf{TreeAnnotator} and then check with \textbf{FigTree} what the estimate of the tMRCA (time to the most recent common ancestor) of the samples from April 28, 2009 is.
 
 Note, however, that we do this for illustration purposes only. In a good practice, one should avoid re-using the data or using the results of an analyses to inform any further analyses containing the same data. Let's pretend therefore that the heterochronous dataset is an independent dataset from the homochronous one. 
 
 \begin{framed}
-Open the \mi{TreeAnnotator} and set \mi{Burnin percentage} to 10, \mi{Posterior probability limit} to 0.5. Leave the other options unchanged.
+Open the \textbf{TreeAnnotator} and set \textbf{Burnin percentage} to 10, \textbf{Posterior probability limit} to 0.5. Leave the other options unchanged.
 
-Set the \mi{Input Tree File} to \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_heterochronous.trees} and the \mi{Output File} to \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_heterochronous.tree}. [Figure \ref{treeAnnotator}]
+Set the \textbf{Input Tree File} to \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_heterochronous.trees} and the \textbf{Output File} to \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_heterochronous.tree}. [Figure \ref{treeAnnotator}]
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=3.5in]{figures/treeAnnotator.png}}
+\fbox{\includegraphics[width=0.5\textwidth]{figures/treeAnnotator.png}}
 \caption{\small Creating the MCC tree.}
 \label{treeAnnotator}
 \end{figure}
 
 \newpage
-How can we find out what the tMRCA of our homochronous data may be? The best may be to have a look at the estimates of the heterochronous data in the \mi{FigTree}.
+How can we find out what the tMRCA of our homochronous data may be? The best may be to have a look at the estimates of the heterochronous data in the \textbf{FigTree}.
 
 \begin{framed}
-Now open the \mi{FigTree} and load \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_heterochronous.tree}.
+Now open the \textbf{FigTree} and load \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_heterochronous.tree}.
 
-In the upper right corner, next to the magnifier glass sign, type \mi{2009/04/28} to highlight all the sequences from April 28, 2009. [Figure \ref{tMRCAmedian}]
+In the upper right corner, next to the magnifier glass sign, type \textbf{2009/04/28} to highlight all the sequences from April 28, 2009. [Figure \ref{tMRCAmedian}]
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=5in]{figures/FigTree_tMRCA_median.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/FigTree_tMRCA_median.png}}
 \caption{\small Displaying median estimates of the node height in the MCC tree.}
 \label{tMRCAmedian}
 \end{figure}
 
 \begin{framed}
-Tick the \mi{Node Labels} in the left menu, and click the arrow next to it to open the full options. Change the \mi{Display} from \mi{age} to \mi{height\_median} [Figure \ref{tMRCAmedian}] and then to \mi{height\_95\%\_HPD} [Figure \ref{tMRCA95HPD}].
+Tick the \textbf{Node Labels} in the left menu, and click the arrow next to it to open the full options. Change the \textbf{Display} from \textbf{age} to \textbf{height\_median} [Figure \ref{tMRCAmedian}] and then to \textbf{height\_95\%\_HPD} [Figure \ref{tMRCA95HPD}].
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=5in]{figures/FigTree_tMRCA_HPD.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/FigTree_tMRCA_HPD.png}}
 \caption{\small Displaying 95\% HPD estimates of the node height in the MCC tree.}
 \label{tMRCA95HPD}
 \end{figure}
@@ -605,16 +605,16 @@ Notice, that since we are using only a subset of all the heterochronous sequence
 \begin{framed}
 Open BEAUti, load the homochronous data and use the same settings as for the \texttt{Homochronous.xml} file.
 
-Create a new taxon set for root node by clicking the \fbox{+} at the bottom of the parameter list in the \mi{Priors} window. This will reveal the \mi{Taxon set  editor}.
+Create a new taxon set for root node by clicking the \fbox{+} at the bottom of the parameter list in the \textbf{Priors} window. This will reveal the \textbf{Taxon set  editor}.
 
-Change the \mi{Taxon set} label to \mi{allseq}.
+Change the \textbf{Taxon set} label to \textbf{allseq}.
 
-Select the sequences belonging to this clade, i.e. all the tips, and move them from the left column to the right column using the \fbox{> >} button and click \mi{OK}. [Figure \ref{tMRCAPrior}] 
+Select the sequences belonging to this clade, i.e. all the tips, and move them from the left column to the right column using the \fbox{> >} button and click \textbf{OK}. [Figure \ref{tMRCAPrior}] 
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=6in]{figures/beast2_homochronous_tMRCA.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/beast2_homochronous_tMRCA.png}}
 \caption{\small Specifying the root height prior.}
 \label{tMRCAPrior}
 \end{figure}
@@ -622,16 +622,16 @@ Select the sequences belonging to this clade, i.e. all the tips, and move them f
 The prior that we are specifying is the date (not the height) of the tMRCA of all the samples in our dataset. Thus, we need to recalculate the date from the tMRCA height estimates that we obtained above. All the tips are sampled at the date $\approx$ 2009.3233. The median date of the MRCA should therefore be calculated as follows $2009.3233-0.5488 = 2008.7745$ and the 95\% HPD should be $[2009.3233-0.5603,2009.3233-0.5343]=[2008.763,2008.789]$.
 
 \begin{framed}
-Back in the \mi{Priors} window, check the box labeled \mi{monophyletic} for the \mi{allseq.prior}.
+Back in the \textbf{Priors} window, check the box labeled \textbf{monophyletic} for the \textbf{allseq.prior}.
 
-Click on the arrow next to the \mi{allseq.prior}. Change the prior distribution on the time of the MRCA of selected sequences from \mi{[none]} to \mi{Laplace Distribution} and set the \mi{Mu} to 2008.7745 and the \mi{Scale} to 0.01 [Figure \ref{tMRCAPrior2}]. 
+Click on the arrow next to the \textbf{allseq.prior}. Change the prior distribution on the time of the MRCA of selected sequences from \textbf{[none]} to \textbf{Laplace Distribution} and set the \textbf{Mu} to 2008.7745 and the \textbf{Scale} to 0.01 [Figure \ref{tMRCAPrior2}]. 
 
-You can check that these settings correspond to the height of tMRCA from the MCC tree by setting \mi{Mu} to 0.5488 and observing the distribution to the right. When you are done, do not forget to set \mi{Mu} back to 2008.7745.
+You can check that these settings correspond to the height of tMRCA from the MCC tree by setting \textbf{Mu} to 0.5488 and observing the distribution to the right. When you are done, do not forget to set \textbf{Mu} back to 2008.7745.
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=7in]{figures/beast2_homochronous_tMRCA_prior.png}}
+\fbox{\includegraphics{figures/beast2_homochronous_tMRCA_prior.png}}
 \caption{\small Specifying the root height prior.}
 \label{tMRCAPrior2}
 \end{figure}
@@ -639,14 +639,14 @@ You can check that these settings correspond to the height of tMRCA from the MCC
 We also need to change the names of the output files so that we do not overwrite the results of the previous analyses.
 
 \begin{framed}
-In the \mi{MCMC} window, click on the arrow next to the \mi{tracelog} and change the \mi{File Name} to \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_homochronous\_tMRCA.log}.
+In the \textbf{MCMC} window, click on the arrow next to the \textbf{tracelog} and change the \textbf{File Name} to \texttt{InfluenzaAH3N2\_HAgene\_2009\_California\_homochronous\_tMRCA.log}.
 
-Then, click on the arrow next to the \mi{treelog} and add \texttt{\_tMRCA} between \texttt{\$(tree)} and \texttt{.trees} in the \mi{File Name} field. [Figure \ref{tMRCAPrior3}]
+Then, click on the arrow next to the \textbf{treelog} and add \texttt{\_tMRCA} between \texttt{\$(tree)} and \texttt{.trees} in the \textbf{File Name} field. [Figure \ref{tMRCAPrior3}]
 \end{framed}
 
 \begin{figure}[h!]
 \centering
-\fbox{\includegraphics[width=5in]{figures/beast2_homochronous_tMRCA_files.png}}
+\fbox{\includegraphics[width=0.75\textwidth]{figures/beast2_homochronous_tMRCA_files.png}}
 \caption{\small Specifying the output file names.}
 \label{tMRCAPrior3}
 \end{figure}
