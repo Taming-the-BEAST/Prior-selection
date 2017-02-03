@@ -364,7 +364,7 @@ For the next parameter, origin, we ask ourselves whether there is any reasonable
 The data span a period of 3 months and are only coming from a limited area; thus, it would be unreasonable to assume that a single season flu epidemic would last longer than a few months. The best guess for the origin parameter prior we could make is  therefore on the order of at least 3-4, up to 6 months. We set the prior according to this expectation.
 
 
-> Click on the arrow next to the **origin** and change the prior distribution from **Uniform** to **Gamma** with **Alpha** parameter set to 0.5 and **Beta** parameter set to 2.0 ([)Figure 14](#originPrior)).
+> Click on the arrow next to the **origin** and change the prior distribution from **Uniform** to **Gamma** with **Alpha** parameter set to 0.5 and **Beta** parameter set to 2.0 ([Figure 14](#originPrior)).
 > 
 
 <figure>
