@@ -1,6 +1,6 @@
 ---
 author: "Veronika Bošková,Venelin Mitov,Louis du Plessis"
-beastversion: 2.x
+beastversion: 2.4.6
 tracerversion: 1.6
 figtreeversion: 1.4.2
 bdskyversion: 1.3.3
@@ -275,7 +275,7 @@ Since the dynamics of influenza virus is likely to change due to the depletion o
 
 <figure>
 	<a id="treePrior"></a>
-	<img  src="figures/beast2_prior_R0.png" alt="">
+	<img  src="figures/beast2_prior_Re.png" alt="">
 	<figcaption>Figure 8: Specifying the tree prior.</figcaption>
 </figure>
 <br>
@@ -283,7 +283,7 @@ Since the dynamics of influenza virus is likely to change due to the depletion o
 
 <figure>
 	<a id="RePrior"></a>
-	<img style="width:50.0%;" src="figures/beast2_prior_R0dimension.png" alt="">
+	<img style="width:50.0%;" src="figures/beast2_prior_Redimension.png" alt="">
 	<figcaption>Figure 9: Specifying the {% eqinline R_e %} prior.</figcaption>
 </figure>
 <br>
