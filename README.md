@@ -7,7 +7,7 @@ bdskyversion: 1.3.3
 layout: tutorial
 level: Beginner
 title: Prior-selection
-subtitle: Prior selection and clock calibration using Influenza A data
+subtitle: Prior selection and clock calibration using Influenza A data.
 ---
 
 
