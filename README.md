@@ -473,7 +473,7 @@ If you like, you can compare your results with the example results we obtained w
 > 
 > Do the parameter traces look better?
 >
-> Examine the posterior estimates for the *becomeUninfectiousRate**, **samplingProportion** and **clockRate** in Tracer.
+> Examine the posterior estimates for the **becomeUninfectiousRate**, **samplingProportion** and **clockRate** in Tracer.
 > Do the estimates look realistic? 
 > Are they different from the priors we set and if so, how?
 >
