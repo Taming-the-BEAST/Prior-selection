@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" required="BDSKY v1.3.3" version="2.4">
 
 
     <data
@@ -94,12 +94,12 @@ CY068249_A_California_VRDL216_2009_2009/04/28=2009.323287671233                <
             <taxonset idref="TaxonSet.InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
         </tree>
         <parameter id="clockRate.c:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="stateNode">1.0</parameter>
-        <parameter id="kappa.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" lower="0.0" name="stateNode">2.0</parameter>
         <parameter id="gammaShape.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="stateNode">1.0</parameter>
+        <parameter id="kappa.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" lower="0.0" name="stateNode">2.0</parameter>
         <parameter id="origin.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" lower="0.0" name="stateNode" upper="Infinity">100.0</parameter>
         <parameter id="rho.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" lower="0.0" name="stateNode" upper="1.0">0.01</parameter>
         <parameter id="becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" lower="0.0" name="stateNode" upper="Infinity">1.0</parameter>
-        <parameter id="R0.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" dimension="5" lower="0.0" name="stateNode" upper="10.0">2.0</parameter>
+        <parameter id="reproductiveNumber.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" dimension="5" lower="0.0" name="stateNode" upper="10.0">2.0</parameter>
         <parameter id="freqParameter.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" dimension="4" lower="0.0" name="stateNode" upper="1.0">0.25</parameter>
     </state>
 
@@ -111,48 +111,48 @@ CY068249_A_California_VRDL216_2009_2009/04/28=2009.323287671233                <
 
     <distribution id="posterior" spec="util.CompoundDistribution">
         <distribution id="prior" spec="util.CompoundDistribution">
-            <distribution id="BirthDeathSkyContemporary.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="beast.evolution.speciation.BirthDeathSkylineModel" R0="@R0.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" becomeUninfectiousRate="@becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" origin="@origin.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" rho="@rho.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" tree="@Tree.t:InfluenzaAH3N2_HAgene_2009_California_homochronous">
+            <distribution id="BirthDeathSkyContemporary.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="beast.evolution.speciation.BirthDeathSkylineModel" becomeUninfectiousRate="@becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" origin="@origin.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" reproductiveNumber="@reproductiveNumber.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" rho="@rho.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" tree="@Tree.t:InfluenzaAH3N2_HAgene_2009_California_homochronous">
                 <parameter id="samplingProportion.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="samplingProportion">0.0</parameter>
             </distribution>
-            <prior id="RPrior.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="distribution" x="@R0.t:InfluenzaAH3N2_HAgene_2009_California_homochronous">
-                <LogNormal id="LogNormalDistributionModel.0" name="distr">
-                    <parameter id="parameter.hyperLogNormalDistributionModel-M-RPrior.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" estimate="false" lower="0.0" name="M" upper="0.0">0.0</parameter>
-                    <parameter id="parameter.hyperLogNormalDistributionModel-S-RPrior.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" estimate="false" lower="0.0" name="S" upper="0.0">1.0</parameter>
-                </LogNormal>
-            </prior>
-            <prior id="becomeUninfectiousRatePrior.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="distribution" x="@becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous">
-                <LogNormal id="LogNormalDistributionModel.01" meanInRealSpace="true" name="distr">
-                    <parameter id="parameter.hyperLogNormalDistributionModel-M-becomeUninfectiousRatePrior.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" estimate="false" lower="0.0" name="M" upper="0.0">52.0</parameter>
-                    <parameter id="parameter.hyperLogNormalDistributionModel-S-becomeUninfectiousRatePrior.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" estimate="false" lower="0.0" name="S" upper="0.0">1.0</parameter>
+            <prior id="becomeUninfectiousRatePriorContemp.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="distribution" x="@becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous">
+                <LogNormal id="LogNormalDistributionModel.1" meanInRealSpace="true" name="distr">
+                    <parameter id="RealParameter.5" estimate="false" name="M">52.0</parameter>
+                    <parameter id="RealParameter.6" estimate="false" name="S">1.0</parameter>
                 </LogNormal>
             </prior>
             <prior id="ClockPrior.c:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="distribution" x="@clockRate.c:InfluenzaAH3N2_HAgene_2009_California_homochronous">
-                <LogNormal id="LogNormalDistributionModel.02" meanInRealSpace="true" name="distr">
-                    <parameter id="RealParameter.0" estimate="false" name="M">0.001</parameter>
-                    <parameter id="RealParameter.01" estimate="false" lower="0.0" name="S" upper="5.0">1.25</parameter>
+                <LogNormal id="LogNormalDistributionModel.3" meanInRealSpace="true" name="distr">
+                    <parameter id="RealParameter.9" estimate="false" name="M">0.001</parameter>
+                    <parameter id="RealParameter.10" estimate="false" lower="0.0" name="S" upper="5.0">1.25</parameter>
                 </LogNormal>
             </prior>
             <prior id="GammaShapePrior.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="distribution" x="@gammaShape.s:InfluenzaAH3N2_HAgene_2009_California_homochronous">
                 <Exponential id="Exponential.0" name="distr">
-                    <parameter id="parameter.hyperExponential-mean-GammaShapePrior.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" estimate="false" lower="0.0" name="mean" upper="0.0">1.0</parameter>
+                    <parameter id="RealParameter.0" estimate="false" name="mean">1.0</parameter>
                 </Exponential>
             </prior>
             <prior id="KappaPrior.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="distribution" x="@kappa.s:InfluenzaAH3N2_HAgene_2009_California_homochronous">
-                <LogNormal id="LogNormalDistributionModel.03" name="distr">
-                    <parameter id="RealParameter.02" estimate="false" name="M">1.0</parameter>
-                    <parameter id="RealParameter.03" estimate="false" name="S">1.25</parameter>
+                <LogNormal id="LogNormalDistributionModel.0" name="distr">
+                    <parameter id="RealParameter.1" estimate="false" name="M">1.0</parameter>
+                    <parameter id="RealParameter.2" estimate="false" name="S">1.25</parameter>
                 </LogNormal>
             </prior>
-            <prior id="originPrior.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="distribution" x="@origin.t:InfluenzaAH3N2_HAgene_2009_California_homochronous">
+            <prior id="originPriorContemp.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="distribution" x="@origin.t:InfluenzaAH3N2_HAgene_2009_California_homochronous">
                 <Gamma id="Gamma.0" name="distr">
-                    <parameter id="RealParameter.04" estimate="false" name="alpha">0.5</parameter>
-                    <parameter id="RealParameter.05" estimate="false" name="beta">2.0</parameter>
+                    <parameter id="RealParameter.11" estimate="false" name="alpha">0.5</parameter>
+                    <parameter id="RealParameter.12" estimate="false" name="beta">2.0</parameter>
                 </Gamma>
             </prior>
-            <prior id="rhoPrior.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="distribution" x="@rho.t:InfluenzaAH3N2_HAgene_2009_California_homochronous">
-                <LogNormal id="LogNormalDistributionModel.04" meanInRealSpace="true" name="distr">
-                    <parameter id="RealParameter.06" estimate="false" name="M">0.001</parameter>
-                    <parameter id="RealParameter.07" estimate="false" lower="0.0" name="S" upper="5.0">1.25</parameter>
+            <prior id="reproductiveNumberPriorContemp.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="distribution" x="@reproductiveNumber.t:InfluenzaAH3N2_HAgene_2009_California_homochronous">
+                <LogNormal id="LogNormalDistributionModel.2" name="distr">
+                    <parameter id="RealParameter.7" estimate="false" name="M">0.0</parameter>
+                    <parameter id="RealParameter.8" estimate="false" name="S">1.0</parameter>
+                </LogNormal>
+            </prior>
+            <prior id="rhoPriorContemp.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" name="distribution" x="@rho.t:InfluenzaAH3N2_HAgene_2009_California_homochronous">
+                <LogNormal id="LogNormalDistributionModel.4" meanInRealSpace="true" name="distr">
+                    <parameter id="RealParameter.13" estimate="false" name="M">0.001</parameter>
+                    <parameter id="RealParameter.14" estimate="false" lower="0.0" name="S" upper="5.0">1.25</parameter>
                 </LogNormal>
             </prior>
             <distribution id="allseq.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:InfluenzaAH3N2_HAgene_2009_California_homochronous">
@@ -188,8 +188,8 @@ CY068249_A_California_VRDL216_2009_2009/04/28=2009.323287671233                <
                     <taxon id="CY092329_A_California_VRDL182_2009_2009/04/28" spec="Taxon"/>
                 </taxonset>
                 <LaplaceDistribution id="LaplaceDistribution.0" name="distr">
-                    <parameter id="RealParameter.08" estimate="false" name="mu">2008.7745</parameter>
-                    <parameter id="RealParameter.09" estimate="false" name="scale">0.01</parameter>
+                    <parameter id="RealParameter.15" estimate="false" name="mu">2008.7745</parameter>
+                    <parameter id="RealParameter.16" estimate="false" name="scale">0.01</parameter>
                 </LaplaceDistribution>
             </distribution>
         </distribution>
@@ -214,9 +214,9 @@ CY068249_A_California_VRDL216_2009_2009/04/28=2009.323287671233                <
         <down idref="Tree.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
     </operator>
 
-    <operator id="KappaScaler.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="ScaleOperator" parameter="@kappa.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" scaleFactor="0.5" weight="0.1"/>
-
     <operator id="gammaShapeScaler.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="ScaleOperator" parameter="@gammaShape.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="KappaScaler.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="ScaleOperator" parameter="@kappa.s:InfluenzaAH3N2_HAgene_2009_California_homochronous" scaleFactor="0.5" weight="0.1"/>
 
     <operator id="BDSKY_contemptreeScaler.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" weight="3.0"/>
 
@@ -236,10 +236,10 @@ CY068249_A_California_VRDL216_2009_2009/04/28=2009.323287671233                <
 
     <operator id="rhoScaler.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="ScaleOperator" parameter="@rho.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" scaleFactor="0.75" weight="1.0"/>
 
-    <operator id="RScaler.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="ScaleOperator" parameter="@R0.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" scaleFactor="0.75" weight="10.0"/>
+    <operator id="reproductiveNumberScaler.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="ScaleOperator" parameter="@reproductiveNumber.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" scaleFactor="0.75" weight="10.0"/>
 
     <operator id="updownBD.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="UpDownOperator" scaleFactor="0.75" weight="2.0">
-        <up idref="R0.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
+        <up idref="reproductiveNumber.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
         <down idref="becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
     </operator>
 
@@ -256,16 +256,16 @@ CY068249_A_California_VRDL216_2009_2009/04/28=2009.323287671233                <
         <log idref="treeLikelihood.InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
         <log id="TreeHeight.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
         <log idref="clockRate.c:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
-        <log idref="kappa.s:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
         <log idref="gammaShape.s:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
+        <log idref="kappa.s:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
         <log idref="BirthDeathSkyContemporary.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
         <log idref="origin.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
         <log idref="rho.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
         <log idref="becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
-        <log idref="R0.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
-        <log id="birth.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="beast.math.statistic.RPNcalculator" expression="R0.t:InfluenzaAH3N2_HAgene_2009_California_homochronous becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous *">
+        <log idref="reproductiveNumber.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
+        <log id="birth.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="beast.math.statistic.RPNcalculator" expression="reproductiveNumber.t:InfluenzaAH3N2_HAgene_2009_California_homochronous becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous *">
             <parameter idref="becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
-            <parameter idref="R0.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
+            <parameter idref="reproductiveNumber.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
         </log>
         <log id="death.t:InfluenzaAH3N2_HAgene_2009_California_homochronous" spec="beast.math.statistic.RPNcalculator" expression="becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous 1 samplingProportion.t:InfluenzaAH3N2_HAgene_2009_California_homochronous - *">
             <parameter idref="becomeUninfectiousRate.t:InfluenzaAH3N2_HAgene_2009_California_homochronous"/>
