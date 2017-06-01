@@ -446,12 +446,66 @@ The run should take about 15-20 minutes. While waiting for your results, you can
 > Load the file into **Tracer** to check mixing and the parameter estimates. 
 > 
 
-First thing you may notice is that most of the parameters do have low ESS (effective sample size below 200, marked in red). This is because our chain did not run long enough. However, the estimates we obtained with a chain of length 5'000'000 are very similar to those obtained with a chain of length 30'000'000.
+<figure>
+	<a id="tracershort"></a>
+	<img  src="figures/tracer_short.png" alt="">
+	<figcaption>Figure 17: Loading the log file into Tracer.</figcaption>
+</figure>
+<br>
+
+First thing you may notice is that most of the parameters do have low ESS (effective sample size below 200) marked in red ([Figure 17](#tracershort)). This is because our chain did not run long enough. However, the estimates we obtained with a chain of length 5'000'000 are very similar to those obtained with a longer chain. 
+
+> Click on **clockRate** and then click on **Trace** to examine the trace of the parameter ([Figure 18](#tracerclocktrace)).
+>
+
+<figure>
+	<a id="tracerclocktrace"></a>
+	<img  src="figures/tracer_clock_trace.png" alt="">
+	<figcaption>Figure 18: The trace of the clock rate parameter.</figcaption>
+</figure>
+<br>
+
+Note that even though the parameter has a low ESS, the chain appears to have passed the burn-in phase and seems to be sampling from across the posterior without getting stuck in any local optima. This is not a proof that the run is mixing well, however it gives us a good intuition that the parameter will have a good ESS value if we run the chain for longer. You should always examine the parameter traces to check convergence; a high ESS value is not proof that a run has converged to the true posterior.
+
+If you like, you can compare your results with the example results we obtained with identical settings and a chain of 30,000,000. 
+
+> Load the file `InfluenzaAH3N2_HAgene_2009_California_heterochronous_30M.log`. 
+> 
+> Do the parameter traces look better?
+>
+> Examine the posterior estimates for the *becomeUninfectiousRate**, **samplingProportion** and **clockRate** in Tracer.
+> Do the estimates look realistic? 
+> Are they different from the priors we set and if so, how?
+>
+
+The estimated posterior distribution for the **becomeUninfectiousRate** has a median of 58.376 and a 95% HPD between 43.2389 and 77.6039 ([Figure 19](#tracerdelta)). This is between{% eqinline \approx %} 4.7 and 8.44 days, thus, roughly one week. This is a lot more specific than the prior we set, which allowed for a much longer infectious period. The estimates also agree with what we know about Influenza A. In this case there was enough information in the sequencing data to estimate a more specific becoming uninfectious rate. If we had relied more on our prior knowledge we could have set a tighter prior on the **becomeUninfectiousRate** parameter, which may have helped the run to converge faster, by preventing it from sampling unrealistic parameter values. However, if you are unsure about a parameter it is always better to set more diffuse priors. 
+
+<figure>
+	<a id="tracerdelta"></a>
+	<img  src="figures/tracer_becomeUninfectiousRate.png" alt="">
+	<figcaption>Figure 19: Estimated posterior distribution for the becoming uninfectious rate.</figcaption>
+</figure>
+<br>
+
+We see that the sampling proportion ([Figure 20](#tracersampling)) is estimated to be below {% eqinline 5 \times %} 10^(-5). This a lot lower than the mean we set for the prior on the sampling proportion (0.001). Therefore our prior estimate of the sampling proportion was much too high. Consequently, we see that the number of cases is also much higher than we initially thought. We assumed that there are around 1,000 cases when we set the prior, however our posterior indicates that the epidemic has on the order of tens of thousands of cases. 
+
+<figure>
+	<a id="tracersampling"></a>
+	<img  src="figures/tracer_samplingProportion.png" alt="">
+	<figcaption>Figure 20: Estimated posterior distribution for the sampling proportion.</figcaption>
+</figure>
+<br>
+
+Looking at the clock rate estimates ([Figure 21](#tracerclockRate)) we that they are about 2 to 3 times faster than the usual substitution rate for human influenza A {% cite jenkins2002 --file Prior-selection/master-refs %}. This is not a cause for concern and is actually a well-documented phenomenon. When viral samples are collected over a short time period the clock rate is often overestimated. The exact cause of the bias is not known, but it is suspected that incomplete purifying selection plays a role. What is important to keep in mind is that this is does not mean that the virus is mutating or evolving faster than usual. When samples are collected over a longer time period the estimated clock rate slows down and eventually reaches the long-term substitution rate.
+
+<figure>
+	<a id="tracerclockRate"></a>
+	<img  src="figures/tracer_clockRate.png" alt="">
+	<figcaption>Figure 21: Estimated posterior distribution for the clock rate.</figcaption>
+</figure>
+<br>
 
 
-> If you like, you can compare your results with the example results we obtained with identical settings. 
-
-Browse the parameter estimates and reflect on them with respect to the priors we set. 
 
 
 
@@ -465,18 +519,30 @@ Follow the same procedure as for the heterochronous sampling. Now, however, use 
 Note that for the **Birth Death Skyline Contemporary** model the sampling proportion is called **rho**, and refers only to the proportion of infected individuals sampled at the present time. This is to distinguish it from the sampling proportion in the **Birth Death Skyline Serial** model, which refers to the proportion of individuals sampled through time. 
 
 <figure>
-	<a id="mcmc"></a>
+	<a id="rho"></a>
 	<img  src="figures/beast2_prior_rho.png" alt="">
-	<figcaption>Figure 17: Specifying the sampling proportion prior for homochronous data.</figcaption>
+	<figcaption>Figure 22: Specifying the sampling proportion prior for homochronous data.</figcaption>
 </figure>
 <br>
 
 
 ## Estimating the substitution rate from homochronous data
-After the run is finished, load the log file into Tracer. Most of the parameters again have ESS values below 200, however in this case the ESS values are lower than for heterochronous data and it is not clear that running the analysis for longer will lead to mixing. Indeed, running the analysis for longer increases increases the ESS values for some parameters, however they remain low for some parameters, in particular the **origin**, **TreeHeight** (tMRCA) and **clockRate**. Low ESS values for these parameters in turn translate into low ESS values for the tree prior (**BirthDeathSkyContemporary**), prior and posterior. 
+
+> After the run is finished, load the log file into Tracer. 
+>
+> Examine the traces of the parameters. Do you think running the analysis for longer will lead to the run mixing well?
+> 
+
+Most of the parameters again have ESS values below 200, however in this case the ESS values are lower than for heterochronous data and it is not clear that running the analysis for longer will lead to mixing. Indeed, while running the analysis for longer increases increases the ESS values for some parameters, however they remain low for some parameters, in particular the **origin**, **TreeHeight** (tMRCA) and **clockRate**. Low ESS values for these parameters in turn translate into low ESS values for the tree prior (**BirthDeathSkyContemporary**), prior and posterior. 
+
+<figure>
+	<a id="tracerclocktrace2"></a>
+	<img  src="figures/tracer_clockTrace2.png" alt="">
+	<figcaption>Figure 23: The trace of the clock rate parameter.</figcaption>
+</figure>
+<br>
 
 Now, check the clock rate and the tree height parameters. 
-
 
 > **QUESTION: Do you think that homochronous samples allow for good substitution rate estimation?** 
 > 
@@ -485,18 +551,18 @@ Now, check the clock rate and the tree height parameters.
 > **If not, how can you see that and where do you think might the problem be? Can we address this problem in our analysis?** 
 > 
 
-Notice the values of the substitution rate estimates. From literature, one can read that influenza's HA gene has a substitution rate of about 10^(-3) substitutions per site per year {% cite jenkins2002 --file Prior-selection/master-refs %}. Our estimate of the clock rate is around this value, but has a very large confidence interval. Notice also, that the confidence interval of the tree height is very large [0.1305,2.7393].
+Notice the values of the substitution rate estimates. From literature, one can read that influenza's HA gene has a substitution rate of about 10^(-3) substitutions per site per year {% cite jenkins2002 --file Prior-selection/master-refs %}. Our estimate of the clock rate is of the same order as this value, but has a very large confidence interval. Notice also, that the confidence interval of the tree height is very large [0.1305,2.7393].
 
 Another way to see that the homochronous sampling does not allow for the estimation of the clock rate is to observe a very strong negative correlation of the clock rate with the tree height.
 
 
-> In **Tracer** click on the **Joint Marginal** panel, select the **TreeHeight** and the **clockRate** simultaneously, and uncheck the **Sample only** box below the graphics ([Figure 17](#clockRatetreeHeightCorrelation)).
+> In **Tracer** click on the **Joint Marginal** panel, select the **TreeHeight** and the **clockRate** simultaneously, and uncheck the **Sample only** box below the graphics ([Figure 23](#clockRatetreeHeightCorrelation)).
 > 
 
 <figure>
 	<a id="clockRatetreeHeightCorrelation"></a>
 	<img  src="figures/tracer_homochronous_treeHeightclockRatecorrelation.png" alt="">
-	<figcaption>Figure 17: Clock rate and tree height correlation in homochronous data.</figcaption>
+	<figcaption>Figure 23: Clock rate and tree height correlation in homochronous data.</figcaption>
 </figure>
 <br>
 
@@ -515,13 +581,13 @@ Note, however, that we do this for illustration purposes only. In good practice,
 
 > Open the **TreeAnnotator** and set **Burnin percentage** to 10, **Posterior probability limit** to 0.5. Leave the other options unchanged.
 > 
-> Set the **Input Tree File** to `InfluenzaAH3N2_HAgene_2009_California_heterochronous.trees` and the **Output File** to `InfluenzaAH3N2_HAgene_2009_California_heterochronous.tree`. ([Figure 18](#treeAnnotator))
+> Set the **Input Tree File** to `InfluenzaAH3N2_HAgene_2009_California_heterochronous.trees` and the **Output File** to `InfluenzaAH3N2_HAgene_2009_California_heterochronous.tree`. ([Figure 24](#treeAnnotator))
 > 
 
 <figure>
 	<a id="treeAnnotator"></a>
 	<img style="width:50.0%;" src="figures/treeAnnotator.png" alt="">
-	<figcaption>Figure 18: Creating the MCC tree.</figcaption>
+	<figcaption>Figure 24: Creating the MCC tree.</figcaption>
 </figure>
 <br>
 
@@ -532,25 +598,25 @@ How can we find out what the tMRCA of our homochronous data may be? The best may
 
 > Now open **FigTree** and load `InfluenzaAH3N2_HAgene_2009_California_heterochronous.tree`.
 > 
-> In the upper right corner, next to the magnifier glass sign, type **2009/04/28** to highlight all the sequences from April 28, 2009. ([Figure 19](#tMRCAmedian))
+> In the upper right corner, next to the magnifier glass sign, type **2009/04/28** to highlight all the sequences from April 28, 2009. ([Figure 25](#tMRCAmedian))
 > 
 
 <figure>
 	<a id="tMRCAmedian"></a>
 	<img  src="figures/FigTree_tMRCA_median.png" alt="">
-	<figcaption>Figure 19: Displaying median estimates of the node height in the MCC tree.</figcaption>
+	<figcaption>Figure 25: Displaying median estimates of the node height in the MCC tree.</figcaption>
 </figure>
 <br>
 
 
 
-> Tick the **Node Labels** in the left menu, and click the arrow next to it to open the full options. Change the **Display** from **age** to **height_median** ([Figure 19](#tMRCAmedian)) and then to **height_95%_HPD** ([Figure 20](#tMRCA95HPD)).
+> Tick the **Node Labels** in the left menu, and click the arrow next to it to open the full options. Change the **Display** from **age** to **height_median** ([Figure 25](#tMRCAmedian)) and then to **height_95%_HPD** ([Figure 26](#tMRCA95HPD)).
 > 
 
 <figure>
 	<a id="tMRCA95HPD"></a>
 	<img  src="figures/FigTree_tMRCA_HPD.png" alt="">
-	<figcaption>Figure 20: Displaying 95% HPD estimates of the node height in the MCC tree.</figcaption>
+	<figcaption>Figure 26: Displaying 95% HPD estimates of the node height in the MCC tree.</figcaption>
 </figure>
 <br>
 
@@ -564,13 +630,13 @@ Notice, that since we are using only a subset of all the heterochronous sequence
 > 
 > Change the **Taxon set** label to **allseq**.
 > 
-> Select the sequences belonging to this clade, i.e. all the tips, and move them from the left column to the right column using the **> >** button and click **OK**. ([Figure 21](#tMRCAPrior))
+> Select the sequences belonging to this clade, i.e. all the tips, and move them from the left column to the right column using the **> >** button and click **OK**. ([Figure 27](#tMRCAPrior))
 > 
 
 <figure>
 	<a id="tMRCAPrior"></a>
 	<img style="width:75.0%;" src="figures/beast2_homochronous_tMRCA.png" alt="">
-	<figcaption>Figure 21: Specifying the root height prior.</figcaption>
+	<figcaption>Figure 27: Specifying the root height prior.</figcaption>
 </figure>
 <br>
 
@@ -580,7 +646,7 @@ The prior that we are specifying is the date (not the height) of the tMRCA of al
 
 > Back in the **Priors** window, check the box labeled **monophyletic** for the **allseq.prior**.
 > 
-> Click on the arrow next to the **allseq.prior**. Change the prior distribution on the time of the MRCA of selected sequences from **[none]** to **Laplace Distribution** and set the **Mu** to 2008.7745 and the **Scale** to 0.01 ([Figure 22](#tMRCAPrior2)). 
+> Click on the arrow next to the **allseq.prior**. Change the prior distribution on the time of the MRCA of selected sequences from **[none]** to **Laplace Distribution** and set the **Mu** to 2008.7745 and the **Scale** to 0.01 ([Figure 28](#tMRCAPrior2)). 
 > 
 > You can check that these settings correspond to the height of tMRCA from the MCC tree by setting **Mu** to 0.5488 and observing the distribution to the right. When you are done, do not forget to set **Mu** back to 2008.7745.
 > 
@@ -588,7 +654,7 @@ The prior that we are specifying is the date (not the height) of the tMRCA of al
 <figure>
 	<a id="tMRCAPrior2"></a>
 	<img  src="figures/beast2_homochronous_tMRCA_prior.png" alt="">
-	<figcaption>Figure 22: Specifying the root height prior.</figcaption>
+	<figcaption>Figure 28: Specifying the root height prior.</figcaption>
 </figure>
 <br>
 
@@ -598,11 +664,44 @@ We also need to change the names of the output files so that we do not overwrite
 
 > In the **MCMC** window, click on the arrow next to the **tracelog** and change the **File Name** to `InfluenzaAH3N2_HAgene_2009_California_homochronous_tMRCA.log`.
 > 
-> Then, click on the arrow next to the **treelog** and add `_tMRCA` between `$(tree)` and `.trees` in the **File Name** field. ([Figure 23](#tMRCAPrior3))
+> Then, click on the arrow next to the **treelog** and add `_tMRCA` between `$(tree)` and `.trees` in the **File Name** field.
 > 
 
-Save the XML file as `Homochronous_tMRCA.log` and run the analysis and compare to the original analysis of the homochronous data. Are the substitution rate estimates more precise now?
+Save the XML file as `Homochronous_tMRCA.xml` and run the analysis and compare to the original analysis of the homochronous data. Are the substitution rate estimates more precise now?
 
+
+# Comparison between runs
+
+> Load the log files for all three analyses into Tracer.
+> 
+> Select **clockRate** and then press `shift` to select all three trace files.
+> 
+> Click on **Marginal Prob Distribution**, selected **Top-Right** for the legend and colour by **Trace File**.
+> 
+> How do the estimates for the three analyses compare to each other?
+>
+> Now repeat for the **TreeHeight**.
+> 
+
+<figure>
+	<a id="tracerclockcompare"></a>
+	<img  src="figures/tracer_clockcomparison.png" alt="">
+	<figcaption>Figure 29: Comparing the marginal posteriors of the clock rate.</figcaption>
+</figure>
+<br>
+
+<figure>
+	<a id="tracertmrcacompare"></a>
+	<img  src="figures/tracer_tmrcacomparison.png" alt="">
+	<figcaption>Figure 30: Comparing the marginal posteriors of the tMRCA.</figcaption>
+</figure>
+<br>
+
+We see that the heterochronous analysis has the tightest posterior estimates for the clock rate. Hence, it is clear that this dataset contains the most information about the clock rate. This is obvious, since this dataset not only contains sequences sampled across time, but it also contains many more sequences than the homochronous dataset. The marginal posterior for the clock rate estimated from homochronous data with a prior on the tMRCA approaches this distribution, however it is still more diffuse. On the other hand, the clock rate estimates made on the homochronous data without a tMRCA prior are very diffuse. It is important to note that these estimates are **not** wrong, but simply indicates that there is a lot of uncertainty in the data. Importantly, the true clock rate still falls within the 95% HPD of the estimated clock rate from homochronous data. If this were not the case then the estimates would be wrong. Thus, when there is not a lot of information in our data, it is always better to have an uncertain estimate that contains the truth than to have a very specific, but wrong estimate. 
+
+On the **TreeHeight** we see that the marginal posterior estimated from homochronous data with a tMRCA prior is almost identical to the marginal posterior estimated on heterochronous data. However, estimates on homochronous data without a tMRCA prior are very diffuse, because there is not enough information in the data to accurately date the tMRCA. 
+
+Note that while we can compare parameter estimates between heterochronous and homochronous data easily enough you should never compare the likelihoods or posteriors between analyses that were run on different datasets!
 
 
 # Useful Links
