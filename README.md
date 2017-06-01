@@ -11,8 +11,6 @@ subtitle: Prior selection and clock calibration using Influenza A data.
 ---
 
 
-
-
 # Background
 In the Bayesian analysis of sequence data, priors play an important role. When priors are not specified correctly it may cause runs to take very long to converge, not converge at all or cause a bias in the inferred trees and model parameters. Selection of proper priors and starting values is crucial and can be a difficult exercise in the beginning. It is not always easy to pick a proper model of tree generation (tree prior), substitution model, molecular clock model or the prior distribution for an unknown parameter. 
 
@@ -283,7 +281,7 @@ Since the dynamics of influenza virus is likely to change due to the depletion o
 
 <figure>
 	<a id="RePrior"></a>
-	<img style="width:50.0%;" src="figures/beast2_prior_Redimension.png" alt="">
+	<img src="figures/beast2_prior_Redimension.png" alt="">
 	<figcaption>Figure 9: Specifying the {% eqinline R_e %} prior.</figcaption>
 </figure>
 <br>
@@ -414,7 +412,7 @@ We want to shorten the chain length, in order for it to run in a reasonable time
 
 <figure>
 	<a id="mcmc"></a>
-	<img style="width:75.0%;" src="figures/beast2_mcmc.png" alt="">
+	<img  src="figures/beast2_mcmc.png" alt="">
 	<figcaption>Figure 16: Specifying the MCMC properties.</figcaption>
 </figure>
 <br>
@@ -465,6 +463,13 @@ We could also use the homochronous data to investigate the dynamics of the H3N2 
 Follow the same procedure as for the heterochronous sampling. Now, however, use the alignment file called `InfluenzaAH3N2_HAgene_2009_California_homochronous.nexus` and use the **Birth Death Skyline Contemporary** model.
 
 Note that for the **Birth Death Skyline Contemporary** model the sampling proportion is called **rho**, and refers only to the proportion of infected individuals sampled at the present time. This is to distinguish it from the sampling proportion in the **Birth Death Skyline Serial** model, which refers to the proportion of individuals sampled through time. 
+
+<figure>
+	<a id="mcmc"></a>
+	<img  src="figures/beast2_prior_rho.png" alt="">
+	<figcaption>Figure 17: Specifying the sampling proportion prior for homochronous data.</figcaption>
+</figure>
+<br>
 
 
 ## Estimating the substitution rate from homochronous data
@@ -595,13 +600,6 @@ We also need to change the names of the output files so that we do not overwrite
 > 
 > Then, click on the arrow next to the **treelog** and add `_tMRCA` between `$(tree)` and `.trees` in the **File Name** field. ([Figure 23](#tMRCAPrior3))
 > 
-
-<figure>
-	<a id="tMRCAPrior3"></a>
-	<img style="width:75.0%;" src="figures/beast2_homochronous_tMRCA_files.png" alt="">
-	<figcaption>Figure 23: Specifying the output file names.</figcaption>
-</figure>
-<br>
 
 Save the XML file as `Homochronous_tMRCA.log` and run the analysis and compare to the original analysis of the homochronous data. Are the substitution rate estimates more precise now?
 
