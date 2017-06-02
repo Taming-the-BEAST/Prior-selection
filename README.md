@@ -496,7 +496,7 @@ We see that the sampling proportion ([Figure 20](#tracersampling)) is estimated 
 </figure>
 <br>
 
-Looking at the clock rate estimates ([Figure 21](#tracerclockRate)) we that they are about 2 to 3 times faster than the usual substitution rate for human influenza A {% cite jenkins2002 --file Prior-selection/master-refs %}. This is not a cause for concern and is actually a well-documented phenomenon. When viral samples are collected over a short time period the clock rate is often overestimated. The exact cause of the bias is not known, but it is suspected that incomplete purifying selection plays a role. What is important to keep in mind is that this is does not mean that the virus is mutating or evolving faster than usual. When samples are collected over a longer time period the estimated clock rate slows down and eventually reaches the long-term substitution rate.
+Looking at the clock rate estimates ([Figure 21](#tracerclockRate)) we see that they are about 2 to 3 times faster than the usual substitution rate for human influenza A {% cite jenkins2002 --file Prior-selection/master-refs %}. This is not a cause for concern and is actually a well-documented phenomenon. When viral samples are collected over a short time period the clock rate is often overestimated. The exact cause of the bias is not known, but it is suspected that incomplete purifying selection plays a role. What is important to keep in mind is that this is does not mean that the virus is mutating or evolving faster than usual. When samples are collected over a longer time period the estimated clock rate slows down and eventually reaches the long-term substitution rate.
 
 <figure>
 	<a id="tracerclockRate"></a>
@@ -667,7 +667,7 @@ We also need to change the names of the output files so that we do not overwrite
 > Then, click on the arrow next to the **treelog** and add `_tMRCA` between `$(tree)` and `.trees` in the **File Name** field.
 > 
 
-Save the XML file as `Homochronous_tMRCA.xml` and run the analysis and compare to the original analysis of the homochronous data. Are the substitution rate estimates more precise now?
+Save the XML file as `Homochronous_tMRCA.xml` and run the analysis and compare to the original analysis of the homochronous data. Are the substitution rate estimates more precise now?  What about the correlation between the tMRCA and the clock rate?
 
 
 # Comparison between runs
