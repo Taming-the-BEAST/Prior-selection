@@ -12,6 +12,7 @@ subtitle: Prior selection and clock calibration using Influenza A data.
 
 
 # Background
+
 In the Bayesian analysis of sequence data, priors play an important role. When priors are not specified correctly it may cause runs to take very long to converge, not converge at all or cause a bias in the inferred trees and model parameters. Selection of proper priors and starting values is crucial and can be a difficult exercise in the beginning. It is not always easy to pick a proper model of tree generation (tree prior), substitution model, molecular clock model or the prior distribution for an unknown parameter. 
 
 The molecular clock model aims to estimate the substitution rate of the data. It is important to understand under which circumstances to use which model and when molecular calibration works. This will help the investigator determine which estimates of parameters can be trusted and which cannot.
@@ -19,30 +20,40 @@ The molecular clock model aims to estimate the substitution rate of the data. It
 In this tutorial, we will explore how priors are selected and how molecular clock calibration works using the H3N2 influenza A data from the flu virus spreading in the USA in 2009. 
 
 
+----
+
 # Programs used in this Exercise
 
 ### BEAST2 - Bayesian Evolutionary Analysis Sampling Trees
 
 BEAST2 is a free software package for Bayesian evolutionary analysis of molecular sequences using MCMC and strictly oriented toward inference using rooted, time-measured phylogenetic trees. This tutorial is written for BEAST v{{ page.beastversion }} {% cite Bouckaert2014 --file Prior-selection/master-refs %}.
 
-### BEAUti - Bayesian Evolutionary Analysis Utility
 
-BEAUti is a graphical user interface tool for generating BEAST2 XML configuration files.
+### BEAUti2 - Bayesian Evolutionary Analysis Utility
+
+BEAUti2 is a graphical user interface tool for generating BEAST2 XML configuration files.
+
+Both BEAST2 and BEAUti2 are Java programs, which means that the exact same code runs on all platforms. For us it simply means that the interface will be the same on all platforms. The screenshots used in this tutorial are taken on a Mac OS X computer; however, both programs will have the same layout and functionality on both Windows and Linux. BEAUti2 is provided as a part of the BEAST2 package so you do not need to install it separately.
+
+
+### TreeAnnotator
+
+TreeAnnotator is used to summarise the posterior sample of trees to produce a maximum clade credibility tree. It can also be used to summarise and visualise the posterior estimates of other tree parameters (e.g. node height).
+
+TreeAnnotator is provided as a part of the BEAST2 package so you do not need to install it separately.
+
 
 ### Tracer 
 
 Tracer ([http://tree.bio.ed.ac.uk/software/tracer](http://tree.bio.ed.ac.uk/software/tracer)) is used to summarize the posterior estimates of the various parameters sampled by the Markov Chain. This program can be used for visual inspection and to assess convergence. It helps to quickly view median estimates and 95% highest posterior density intervals of the parameters, and calculates the effective sample sizes (ESS) of parameters. It can also be used to investigate potential parameter correlations. We will be using Tracer v{{ page.tracerversion }}.
 
-### TreeAnnotator
-
-TreeAnnotator is used to summarize the posterior sample of trees to produce a maximum clade credibility tree. It is also useful to summarise and visualise the posterior estimates of other tree parameters (e.g. node height). 
 
 ### FigTree
 
 FigTree ([http://tree.bio.ed.ac.uk/software/figtree](http://tree.bio.ed.ac.uk/software/figtree)) is a program for viewing trees and producing publication-quality figures. It can interpret the node-annotations created on the summary trees by TreeAnnotator, allowing the user to display node-based statistics (e.g. posterior probabilities). We will be using FigTree v{{ page.figtreeversion }}.
 
 
-
+----
 
 # Practical: H3N2 flu dynamics - heterochronous data
 In this tutorial, we will estimate the rate of evolution from a set of virus sequences that have been isolated either at one point in time (homochronous) or at different points in time (heterochronous or time-stamped data). We use the hemagglutinin (HA) gene of the H3N2 strain spreading across America alongside the pandemic H1N1 virus in 2009 {% cite cdc2009 --file Prior-selection/master-refs %}. 
@@ -703,6 +714,7 @@ On the **TreeHeight** we see that the marginal posterior estimated from homochro
 
 Note that while we can compare parameter estimates between heterochronous and homochronous data easily enough you should never compare the likelihoods or posteriors between analyses that were run on different datasets!
 
+----
 
 # Useful Links
 
