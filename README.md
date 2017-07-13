@@ -1,6 +1,6 @@
 ---
 author: "Veronika Bošková,Venelin Mitov,Louis du Plessis"
-beastversion: 2.4.6
+beastversion: 2.4.7
 tracerversion: 1.6.0
 figtreeversion: 1.4.2
 bdskyversion: 1.3.3
