@@ -163,7 +163,7 @@ We want all the tree information to be specified for units of time in "years", t
 
 <figure>
 	<a id="timeUnitsAndFlow"></a>
-	<img style="width:75.0%;" src="figures/beast2_time_specification.png" alt="">
+	<img style="width:100.0%;" src="figures/beast2_time_specification.png" alt="">
 	<figcaption>Figure 4: Specifying time units and direction of time flow.</figcaption>
 </figure>
 <br>
