@@ -1,9 +1,9 @@
 ---
 author: "Veronika Bošková,Venelin Mitov,Louis du Plessis"
-beastversion: 2.4.7
-tracerversion: 1.6.0
-figtreeversion: 1.4.2
-bdskyversion: 1.3.3
+beastversion: 2.5.2
+tracerversion: 1.7.0
+figtreeversion: 1.4.4
+bdskyversion: 1.4.5
 layout: tutorial
 level: Beginner
 title: Prior-selection
@@ -159,7 +159,9 @@ The heterochronous dataset contains information on the dates sequences were samp
 > In the **Tip Dates** panel, click the **Use tip dates** option. 
 > 
 
-We want all the tree information to be specified for units of time in "years", thus we leave the **Dates specified as** option set to default "year". Also we want the time to flow forward in time in the tree, therefore, we keep to default option of tip dates being specified as "Since some time in the past" ([Figure 4](#timeUnitsAndFlow)).
+The sequence labels (headers in the FASTA file) contain sampling times specified as dates in the format year/month/day.  In order for BEAST to use this information we must specify the form of this date string and tell BEAST where to find the data.  To do this, first set **Dates specified** to the "as dates with format" option. Then click the arrows next to the box immediately to the right of this option and select "yyyy/M/dd" ([Figure 4](#timeUnitsAndFlow)).  This tells BEAUti that the dates are specified with a full length (4-digit) year, then the month number, then a 2-digit day, all separated by '/' characters.
+
+> Set **Dates specified** to the option "as dates with format", then select "yyyy/M/dd" from the list of possible date formats.
 
 <figure>
 	<a id="timeUnitsAndFlow"></a>
@@ -169,7 +171,7 @@ We want all the tree information to be specified for units of time in "years", t
 <br>
 
 
-You could specify the tip dates by hand, by clicking for each row (i.e. for each sequence) into the **Date** column and typing the date information in for each sequence in turn. However, this is a laborious and error-prone procedure and can take a long time to finish. Fortunately, we can use BEAUti, to read off the dates from the sequence names for us. Each sequence is named such that the expression after the last underscore character ("_") contains the sampling date information. BEAUti can search for this expression to extract the sequence date.
+You could specify the tip dates by hand, by clicking for each row (i.e. for each sequence) into the **Date (raw value)** column and typing the date information in for each sequence in turn. However, this is a laborious and error-prone procedure and can take a long time to finish. Fortunately, we can use BEAUti, to read off the dates from the sequence names for us. Each sequence is named such that the expression after the last underscore character ("_") contains the sampling date information. BEAUti can search for this expression to extract the sequence date.
 
 
 > Press the **Auto-configure** button. A window will appear where you can specify how BEAUti can find the date of sampling of each sequence. ([Figure 5](#guessDates))
@@ -635,7 +637,7 @@ Notice, that since we are using only a subset of all the heterochronous sequence
 
 > Open BEAUti, load the homochronous data and use the same settings as for the `Homochronous.xml` file.
 > 
-> Create a new taxon set for root node by clicking the **+ Add Prior** button at the bottom of the parameter list in the **Priors** window. Select **MRCA prior** in the dropdown menu and press **OK**. This will reveal the **Taxon set editor**.
+> Create a new taxon set for root node by clicking the **+ Add Prior** button at the bottom of the parameter list in the **Priors** window. Select **MRCA prior** in the dropdown menu (if one appears) and press **OK**. This will reveal the **Taxon set editor**.
 > 
 > Change the **Taxon set** label to **allseq**.
 > 
@@ -668,12 +670,14 @@ The prior that we are specifying is the date (not the height) of the tMRCA of al
 <br>
 
 
-We also need to change the names of the output files so that we do not overwrite the results of the previous analyses.
+We also need to change the names of the output files so that we do not overwrite the results of the previous analyses. Here we will do this by setting the
+trace log file name to `$(filebase).log` and the tree log file name to `$(filebase).$(tree).log`.  This is often a sensible thing to do as `$(filebase)` is
+replaced with the name of the XML file, so will always produce different log file names as long as the XML is different.
 
 
-> In the **MCMC** window, click on the arrow next to the **tracelog** and change the **File Name** to `InfluenzaAH3N2_HAgene_2009_California_homochronous_tMRCA.log`.
+> In the **MCMC** window, click on the arrow next to the **tracelog** and change the **File Name** to `$(filebase).log`.
 > 
-> Then, click on the arrow next to the **treelog** and add `_tMRCA` between `$(tree)` and `.trees` in the **File Name** field.
+> Then, click on the arrow next to the **treelog** and change the **File Name** to `$(filebase).$(tree).log`.
 > 
 
 Save the XML file as `Homochronous_tMRCA.xml` and run the analysis and compare to the original analysis of the homochronous data. 
