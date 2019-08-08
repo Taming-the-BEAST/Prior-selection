@@ -24,7 +24,7 @@ In this tutorial we will explore how priors are selected and how molecular clock
 
 ### BEAST2 - Bayesian Evolutionary Analysis Sampling Trees
 
-BEAST2 is a free software package for Bayesian evolutionary analysis of molecular sequences using MCMC and strictly oriented toward inference using rooted, time-measured phylogenetic trees. This tutorial is written for BEAST v{{ page.beastversion }} {% cite Bouckaert2014 --file Prior-selection/master-refs %}.
+BEAST2 is a free software package for Bayesian evolutionary analysis of molecular sequences using MCMC and strictly oriented toward inference using rooted, time-measured phylogenetic trees. This tutorial is written for BEAST v{{ page.beastversion }} {% cite Bouckaert2014 --file Prior-selection/master-refs %}, {% cite Bouckaert2019 --file Prior-selection/master-refs %}.
 
 
 ### BEAUti2 - Bayesian Evolutionary Analysis Utility
@@ -78,9 +78,30 @@ After completing this tutorial you should be able to:
 
 ## The data
 
-The full heterochronous dataset contains an alignment of 139 HA sequences 1738 nucleotides long. The samples were obtained from California between April and June 2009 (file named 
+Before we can start we need to download the input data for the tutorial. The full heterochronous dataset contains an alignment of 139 HA sequences 1738 nucleotides long. The samples were obtained from California between April and June 2009 (file named 
 `InfluenzaAH3N2_HAgene_2009_California_heterochronous.nexus`). The homochronous data is a subset of the heterochronous data, consisting of an alignment of 29 sequences of 1735 nucleotides all sampled on April 28, 2009 (file named `InfluenzaAH3N2_HAgene_2009_California_homochronous.nexus`). 
 
+
+The alignment files can be downloaded from the Taming the BEAST website at [https://taming-the-beast.org/tutorials/Prior-selection/](https://taming-the-beast.org/tutorials/Prior-selection/) or from Github.
+
+> **Downloading from taming-the-beast.org**
+> 
+> Links to the alignment files, `InfluenzaAH3N2_HAgene_2009_California_heterochronous.nexus` and `InfluenzaAH3N2_HAgene_2009_California_homochronous.nexus`, are on the left-hand panel, under the heading **Data**.
+> **Right-click** on the link and select **"Save Link As..."** (Firefox and Chrome) or **"Download Linked File As..."** (Safari) and save the file to a convenient location on your local drive. Note that some browsers will automatically change the extension of the file from `.nexus` to `.nexus.txt`. If this is the case, simply rename the file again. 
+>
+> Alternatively, if you **left-click** on the link most browsers will display the alignment file. You can then press **File > Save As** to store a local copy of the file. Note that some browsers will inject an HTML header into the file, which will make it unusable in BEAST2 (making this the less preferable option for downloading data files).
+>
+> In the same way you can also download example `.xml` files for the analyses in this tutorial, as well as _pre-cooked_ output `.log` and `.trees` files. We recommend only downloading these files to check your results or if you become seriously stuck.
+>
+
+<br>
+
+> **Downloading from Github**
+>
+> If you navigate to the Github repository you can either download the raw data files directly from **Github** or clone/download the repository to your local drive.
+>
+> Note that this tutorial is distributed under a **CC BY 4.0** license, which gives anyone the right to freely use (and modify) it, as long as appropriate credit is given and the updated material is licensed in the same fashion.
+>
 
 
 
