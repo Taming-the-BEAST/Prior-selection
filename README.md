@@ -13,7 +13,7 @@ subtitle: Prior selection and clock calibration using Influenza A data.
 
 # Background
 
-In the Bayesian analysis of sequence data, priors play an important role. When priors are not specified correctly, it may cause runs to take very long to converge, not converge at all or cause a bias in the inferred trees and model parameters. Selection of proper priors and starting values is crucial and can be a difficult exercise in the beginning. It is not always easy to pick a proper model of tree generation (tree prior), substitution model, molecular clock model or the prior distribution for an unknown parameter. 
+In the Bayesian analysis of sequence data, priors play an important role. When priors are not specified correctly, it may cause runs to take a fvery long to converge, not converge at all or cause a bias in the inferred trees and model parameters. Selection of proper priors and starting values is crucial and can be a difficult exercise in the beginning. It is not always easy to pick a proper model of tree generation (tree prior), substitution model, molecular clock model or the prior distribution for an unknown parameter. 
 
 The molecular clock model aims to estimate the substitution rate of the data. It is important to understand under which circumstances to use which model and when molecular calibration works. This will help the investigator determine which estimates of parameters can be trusted and which cannot.
 
@@ -22,7 +22,7 @@ In this tutorial we will explore how priors are selected and how molecular clock
 
 ----
 
-# Programs used in this Exercise
+# Programs used in this exercise
 
 ### BEAST2 - Bayesian Evolutionary Analysis Sampling Trees
 
@@ -45,12 +45,12 @@ TreeAnnotator is provided as a part of the BEAST2 package so you do not need to 
 
 ### Tracer 
 
-Tracer ([http://tree.bio.ed.ac.uk/software/tracer](http://tree.bio.ed.ac.uk/software/tracer)) is used to summarize the posterior estimates of the various parameters sampled by the Markov Chain. This program can be used for visual inspection and to assess convergence. It helps to quickly view median estimates and 95% highest posterior density intervals of the parameters, and calculates the effective sample sizes (ESS) of parameters. It can also be used to investigate potential parameter correlations. We will be using Tracer v{{ page.tracerversion }}.
+Tracer ([http://beast.community/tracer](http://beast.community/tracer)) is used to summarize the posterior estimates of the various parameters sampled by the Markov Chain. This program can be used for visual inspection and to assess convergence. It helps to quickly view median estimates and 95% highest posterior density intervals of the parameters, and calculates the effective sample sizes (ESS) of parameters. It can also be used to investigate potential parameter correlations. We will be using Tracer v{{ page.tracerversion }}.
 
 
 ### FigTree
 
-FigTree ([http://tree.bio.ed.ac.uk/software/figtree](http://tree.bio.ed.ac.uk/software/figtree)) is a program for viewing trees and producing publication-quality figures. It can interpret the node-annotations created on the summary trees by TreeAnnotator, allowing the user to display node-based statistics (e.g. posterior probabilities). We will be using FigTree v{{ page.figtreeversion }}.
+FigTree ([http://beast.community/figtree](http://beast.community/figtree)) is a program for viewing trees and producing publication-quality figures. It can interpret the node-annotations created on the summary trees by TreeAnnotator, allowing the user to display node-based statistics (e.g. posterior probabilities). We will be using FigTree v{{ page.figtreeversion }}.
 
 
 ----
@@ -73,7 +73,7 @@ The more general aim of this tutorial is to:
 
 
 
-## The Data
+## The data
 
 The full heterochronous dataset contains an alignment of 139 HA sequences 1738 nucleotides long. The samples were obtained from California between April and June 2009 (file named 
 `InfluenzaAH3N2_HAgene_2009_California_heterochronous.nexus`). The homochronous data is a subset of the heterochronous data, consisting of an alignment of 29 sequences of 1735 nucleotides all sampled on April 28, 2009 (file named `InfluenzaAH3N2_HAgene_2009_California_homochronous.nexus`). 
@@ -82,20 +82,20 @@ The full heterochronous dataset contains an alignment of 139 HA sequences 1738 n
 
 
 
-## Creating the Analysis File with BEAUti
+## Creating the analysis file with BEAUti
 
 We will use BEAUti to select the priors and starting values for our analysis and save these settings into a BEAST-readable XML file. 
 
 
-> Begin by starting BEAUti2.
+> Begin by starting **BEAUti2**.
 > 
 
 
 
 
-### Installing BEAST2 Plug-Ins
+### Installing BEAST2 packages
 
-Since we will be using the birth-death skyline model (**BDSKY**) {% cite Stadler2013 --file Prior-selection/master-refs %}, we need to make sure it is available in BEAUti. It is not one of the default models but rather an add-on (also called a plug-in or package). You only need to install a BEAST2 package once. Thus, if you close BEAUti, you do not have to load **BDSKY** the next time you open the program. However, it is worth checking the package manager for updates to plug-ins, particularly if you update your version of BEAST2. For this tutorial we need to ensure that we have at least BDSKY v{{ page.bdskyversion }} installed.
+Since we will be using the birth-death skyline model (**BDSKY**) {% cite Stadler2013 --file Prior-selection/master-refs %}, we need to make sure it is available in BEAUti. It is not one of the default models but rather a package (also sometimes called a plug-in or an add-on). You only need to install a BEAST2 package once. After installing, if you close BEAUti, you do not have to load **BDSKY** again the next time you open the program. However, it is worth checking the package manager for updates to packages, particularly if you update your version of BEAST2. For this tutorial we need to ensure that we have at least BDSKY v{{ page.bdskyversion }} installed.
 
 > Open the **BEAST2 Package Manager** by navigating to **File > Manage Packages**. ([Figure 1](#packageManage1))
 > 
@@ -120,7 +120,7 @@ Since we will be using the birth-death skyline model (**BDSKY**) {% cite Stadler
 <br>
 
 
-After the installation of an add-on, the program is on your computer, but BEAUti is unable to load the template files for the newly installed model unless it is restarted. So, let's restart BEAUti to make sure we have the **BDSKY** model at hand.
+After the installation of a package, the program is on your computer, but BEAUti is unable to load the template files for the newly installed model unless it is restarted. So, let's restart BEAUti to make sure we have the **BDSKY** model at hand.
 
 
 > Close the **BEAST2 Package Manager** and **_restart_** BEAUti to fully load the **BDSKY** package.
@@ -130,18 +130,18 @@ After the installation of an add-on, the program is on your computer, but BEAUti
 
 
 
-### Importing alignment
+### Importing the alignment
 
 We will first analyse the alignment of sequences sampled through time (heterochronous sequences). 
  
 
-> In the **Partitions** panel, import the nexus file with the alignment by navigating to **File > Import Alignment** in the menu ([Figure 3](#importAlignment)) and then finding the file called `InfluenzaAH3N2_HAgene_2009_California_heterochronous.nexus`  file on your computer.
+> In the **Partitions** panel, import the nexus file with the alignment by navigating to **File > Import Alignment** in the menu ([Figure 3](#importAlignment)) and then finding the `InfluenzaAH3N2_HAgene_2009_California_heterochronous.nexus`  file on your computer **or** simply drag and drop the file into the **BEAUti** window.
 > 
 
 <figure>
 	<a id="importAlignment"></a>
 	<img style="width:75.0%;" src="figures/beast2_import_alignment.png" alt="">
-	<figcaption>Figure 3: Importing alignment into BEAUti.</figcaption>
+	<figcaption>Figure 3: Importing the alignment into BEAUti.</figcaption>
 </figure>
 <br>
 
@@ -161,7 +161,7 @@ The heterochronous dataset contains information on the dates sequences were samp
 
 The sequence labels (headers in the FASTA file) contain sampling times specified as dates in the format year/month/day.  In order for BEAST to use this information we must specify the form of this date string and tell BEAST where to find the data.  To do this, first set **Dates specified** to the "as dates with format" option. Then click the arrows next to the box immediately to the right of this option and select "yyyy/M/dd" ([Figure 4](#timeUnitsAndFlow)).  This tells BEAUti that the dates are specified with a full length (4-digit) year, then the month number, then a 2-digit day, all separated by '/' characters.
 
-> Set **Dates specified** to the option "as dates with format", then select "yyyy/M/dd" from the list of possible date formats.
+> Set **Dates specified** to the option **"as dates with format"**, then select **"yyyy/M/dd"** from the list of possible date formats.
 
 <figure>
 	<a id="timeUnitsAndFlow"></a>
@@ -194,13 +194,14 @@ Now we are done with the data specification and we are about to start specifying
 
 
 
+
 ### Specifying the Site Model
 
 
 > Navigate to the **Site Model** panel, where we can choose the model of nucleotide evolution that we want to assume to underly our dataset. 
 > 
 
-Our dataset is made of nucleotide sequences. There are four models of nucleotide evolution available in BEAUti2: **JC69, HKY, TN93** and **GTR**. The **JC69** model is the simplest evolutionary model. All the substitutions are assumed to happen at the same rate and all the bases are assumed to have identical frequencies, i.e. each base **A, C, G** and **T** is assumed to have an equilibrium frequency of 0.25. In the **HKY** model, the rate of transitions **A {% eqinline \leftrightarrow %} G** and **C {% eqinline \leftrightarrow %} T** is allowed to be different from the rate of transversions **A {% eqinline \leftrightarrow %} C, G {% eqinline \leftrightarrow %} T**. Furthermore, the frequency of each base can be either "Estimated", "Empirical" or "All Equal". When we set the frequencies to "Estimated", the frequency of each base will be co-estimated as a parameter during the BEAST run. If we use "Empirical", base frequencies will be set to the frequencies of each base found in the alignment. Finally, if set to "All Equal", the base frequencies will be set to 0.25. The **TN93** model is slightly more complicated than **HKY**, by allowing for different rates of **A {% eqinline \leftrightarrow %} G** and **C {% eqinline \leftrightarrow %} T** transitions. Finally, the **GTR** model is the most general model and allows for different substitution rates between each pair of nucleotides as well as different base frequencies, resulting in a total of 9 free parameters. 
+Our dataset is made of nucleotide sequences. There are four models of nucleotide evolution available in BEAUti2: **JC69, HKY, TN93** and **GTR**. The **JC69** model is the simplest evolutionary model. All the substitutions are assumed to happen at the same rate and all the bases are assumed to have identical frequencies, i.e. each base **A, C, G** and **T** is assumed to have an equilibrium frequency of 0.25. In the **HKY** model, the rate of transitions **A {% eqinline \leftrightarrow %} G** and **C {% eqinline \leftrightarrow %} T** is allowed to be different from the rate of transversions **A {% eqinline \leftrightarrow %} C, G {% eqinline \leftrightarrow %} T**. Furthermore, the frequency of each base can be either "Estimated", "Empirical" or "All Equal". When we set the frequencies to "Estimated", the frequency of each base will be co-estimated as a parameter during the BEAST run. If we use "Empirical", base frequencies will be set to the frequencies of each base found in the alignment. Finally, if set to "All Equal", the base frequencies will be set to 0.25. The **TN93** model is slightly more complicated than **HKY**, by allowing for different rates of **A {% eqinline \leftrightarrow %} G** and **C {% eqinline \leftrightarrow %} T** transitions. Finally, the **GTR** model is the most general reversible model and allows for different substitution rates between each pair of nucleotides as well as different base frequencies, resulting in a total of 9 free parameters. 
 
 
 > **Topic for discussion:** Which substitution model may be the most appropriate for our dataset and why? 
@@ -219,13 +220,13 @@ Once again, a proper model comparison, i.e. comparing a model without gamma rate
 Let us therefore choose the HKY model with 4 gamma rate categories for the substitution rate. 
 
 
-> Change the **Gamma Category Count** to 4, tick the estimate box next to the **Shape** parameter of the Gamma distribution and set the **Subst Model** to **HKY**. Make sure that both **Kappa** and **Frequencies** are estimated. ([Figure 6](#substitutionModel)) 
+> Change the **Gamma Category Count** to 4, make sure that the estimate box next to the **Shape** parameter of the Gamma distribution is ticked and set **Subst Model** to **HKY**. Make sure that both **Kappa** (the transition/transversion rate ratio) and **Frequencies** are estimated. ([Figure 6](#substitutionModel)) 
 > 
 
 <figure>
 	<a id="substitutionModel"></a>
 	<img style="width:75.0%;" src="figures/beast2_substitution_model.png" alt="">
-	<figcaption>Figure 6: Specifying substitution model.</figcaption>
+	<figcaption>Figure 6: Specifying the substitution model.</figcaption>
 </figure>
 <br>
 
@@ -242,10 +243,10 @@ Notice also, that we leave the substitution rate fixed to 1.0 and do not estimat
 > Navigate to the **Clock Model** panel.
 > 
 
-Four different clock models are available in BEAST2, allowing us to specify lineage-specific substitution rate variation. The default model in BEAUti is the *Strict Clock*. The other three models relax the assumption of a constant substitution rate. The *Relaxed Clock Log Normal* allows for the substitution rates associated with each branch to be independently drawn from a single, discretized log normal distribution {% cite drummond06 --file Prior-selection/master-refs %}. Under the *Relaxed Clock Exponential* model, the rates associated with each branch are drawn from an exponential distribution {% cite drummond06 --file Prior-selection/master-refs %}. Both of these models are uncorrelated relaxed clock models. The log normal distribution has the advantage that one can estimate its variance, which reflects the extent to which the molecular clock needs to be relaxed. In both models, BEAUti sets by default the **Number Of Discrete Rates** to -1. This means that the number of bins that the distribution is divided into is equal to the number of branches. The last available model is the *Random Local Clock* which averages over all possible local clock models {% cite drummond10 --file Prior-selection/master-refs %}. 
+By deafult, four different clock models are available in BEAST2, allowing us to specify different models of lineage-specific substitution rate variation. The default model in BEAUti is the *Strict Clock*, which assumes a single fixed substitution rate across the whole tree. The other three models relax the assumption of a constant substitution rate. The *Relaxed Clock Log Normal* allows for the substitution rates associated with each branch to be independently drawn from a single, discretized log normal distribution {% cite drummond06 --file Prior-selection/master-refs %}. Under the *Relaxed Clock Exponential* model, the rates associated with each branch are drawn from an exponential distribution {% cite drummond06 --file Prior-selection/master-refs %}. Both of these models are uncorrelated relaxed clock models. The log normal distribution has the advantage that one can estimate its variance, which reflects the extent to which the molecular clock needs to be relaxed. In both models, BEAUti sets the **Number Of Discrete Rates** to -1 by default. This means that the number of bins that the distribution is divided into is equal to the number of branches. The last available model is the *Random Local Clock* which averages over all possible local clock models {% cite drummond10 --file Prior-selection/master-refs %}. 
 
 
-> **Topic for discussion:** Which clock model may be the most appropriate for our dataset and why?
+> **Topic for discussion:** Which clock model may be the most appropriate for our dataset and why? (Influenza A/H3N2 HA gene sequences sampled over 3 months).
 > 
 
 Since we are observing the sequence data from a single epidemic of H3N2 virus in humans in a single location (southwest USA), we do not have any reason to assume different substitution rates for different lineages. Thus, the most straightforward option is to choose the default **Strict Clock** model ([Figure 7](#clockModel)). Note however, that a rigorous model comparison would be the best way to proceed with the choice of the clock model.
@@ -267,13 +268,13 @@ Since we are observing the sequence data from a single epidemic of H3N2 virus in
 > Navigate to the **Priors** panel.
 > 
 
-
+**Paragraph needs to be rewritten**
 Since the dynamics of influenza virus is likely to change due to the depletion of the susceptible population and/or the presence of the resistant individuals, we choose the birth-death skyline model of population dynamics with 5 time intervals for {% eqinline R_e %}, to capture this likely change of dynamics over time. {% eqinline R_0 %}, the basic reproductive number, is an important variable for the study of infectious diseases, since it defines how many individuals a single infected individual infects on average in a completely susceptible population over the course of her/his infection. {% eqinline R_e %}, the effective reproduction number, is the average number of secondary infections caused by an infected individual at a given time during the epidemic. Thus, {% eqinline R_e %} is a function of time. In other words, it tells us how quickly the disease is spreading in a population. As long as {% eqinline R_e %} is above 1 the epidemic is likely to continue spreading, therefore prevention efforts aim to push {% eqinline R_e %} below 1. Note that as more people become infected and the susceptible population decreases {% eqinline R_e %} will naturally decrease over the course of an epidemic, however treatment, vaccinations, quarantine and changes in behaviour can all contribute to decreasing {% eqinline R_e %} faster. In a birth-death process, {% eqinline R_e %} is defined as the ratio of the birth (or speciation) rate and the total death (or extinction) rate.  {% eqinline R_e %} for any infection is rarely above 10, so we set this as the upper value for {% eqinline R_e %} in our analysis.
 
 
 > For the **Tree** model, select the option **Birth Death Skyline Serial**. 
 > 
-> Then, click in the arrow to the left from **reproductiveNumber** to open all the options for {% eqinline R_e %} settings ([Figure 8](#treePrior)). Leave all the settings to the default, since it specifies a prior that is not too strong and centered around 1. This is exactly what we want. 
+> Then, click on the arrow to the left of **reproductiveNumber** to open all the options for {% eqinline R_e %} settings ([Figure 8](#treePrior)). Leave all the settings on the default, since the default Log Normal prior is not too strong and is centered around 1. This is exactly what we want. 
 > 
 > Then, click on the button where it says **initial = [2.0] [0.0, Infinity]**. A pop-up window will show up ([Figure 9](#RePrior)).
 > 
@@ -301,13 +302,13 @@ Notice that the pop-up window allows one to specify not only the **Dimension** b
 After we have specified the prior for {% eqinline R_e %}, the next prior that needs our attention is the **becomeUninfectiousRate**. This specifies how quickly a person infected with influenza recovers. From our personal experience, we would say, it takes around one week to 10 days from infection to recovery. Since the rate of becoming uninfectious is the reciprocal of the period of infectiousness this translates to a becoming uninfectious rate of 365/10=36.5 to 365/7 {% eqinline \approx %} 52.14 per year (recall that we specified dates in our tree in years, and not days). Let us set the prior for **becomeUninfectiousRate** rate accordingly. 
 
 
->  Click on the arrow next to **becomeUninfectiousRate** and change the value for **M** (mean) of the default log normal distribution to 52 and tick the box **Mean In Real Space** to specify the mean of the distribution in real space instead of log space ([Figure 10](#becomeUninfectiousPrior)).
+>  Click on the arrow next to **becomeUninfectiousRate** and change the value for **M** (mean) of the default log normal distribution to 52 and tick the box **Mean In Real Space** which allows us to specify the mean of the distribution in real space ([Figure 10](#becomeUninfectiousPrior)).
 > 
 
 <figure>
 	<a id="becomeUninfectiousPrior"></a>
 	<img  src="figures/beast2_prior_becomeUninfectious.png" alt="">
-	<figcaption>Figure 10: Specifying the become uninfectious prior.</figcaption>
+	<figcaption>Figure 10: Specifying the becoming uninfectious rate prior.</figcaption>
 </figure>
 <br>
 
@@ -317,7 +318,7 @@ Looking at the 2.5% and 97.5% quantiles for the distribution we see that 95% of 
 Now we have to specify the clock rate prior. This is the prior for the substitution rate.
 
 
-> **Topic for discussion:** What substitution rate is appropriate for viruses? More specifically, what substitution rate is expected for influenza virus, in your opinion? 
+> **Topic for discussion:** What substitution rate is appropriate for viruses? More specifically, what substitution rate is expected for influenza HA genes, in your opinion? 
 > 
 
 By default, the clock rate in BEAST2 has a uniform prior between 0 and infinity. This is not only extremely unspecific, but also an improper prior (it does not integrate to 1). In general, a log-normal distribution works well for rates, since it does not allow negative values. Furthermore, it places most weight close to 0, while also allowing for larger values, making it an appropriate prior for the clock rate, which we expect to be quite low in general, but may be higher in exceptional cases. You could set your best guess as a prior by, for example, choosing a log-normal distribution centered around your best guess for the substitution rate.
@@ -353,7 +354,7 @@ We also need to estimate the Gamma shape parameter, which governs the shape of t
 
 
 
-We do not have any prior information on transition-transversion ratio besides the fact that it is a value usually larger than 1 (transitions are more frequent than transversions). We therefore set a weakly informative prior for this parameter. The default log normal prior perfectly fits to these requirements and usually does not need to be changed ([Figure 13](#kappaPrior)). 
+We do not have any prior information on transition-transversion rate ratio besides the fact that it is a value usually larger than 1 (transitions are more frequent than transversions). We therefore set a weakly informative prior for this parameter. The default log normal prior perfectly fits to these requirements and usually does not need to be changed ([Figure 13](#kappaPrior)). 
 
 <figure>
 	<a id="kappaPrior"></a>
@@ -369,7 +370,7 @@ For the next parameter, the origin of the epidemic, we ask ourselves whether the
 > **Topic for discussion:** Do you have any feeling for what the origin should/could be set to?
 > 
 
-The data span a period of 3 months and come from a limited area; thus, it would be unreasonable to assume that a single season flu epidemic would last longer than a few months. The best guess for the origin parameter prior we could make is therefore on the order of at least 3-4, but probably no more than 6 months. We set the prior according to this expectation.
+The data span a period of 3 months and come from a limited area; thus, it would be unreasonable to assume that a single season flu epidemic would last longer than a few months. The best guess for the origin parameter prior we could make is therefore on the order of at least 3-4, but probably no more than 6 months. We set the prior according to this expectation. (Remember that branch lengths are measured in years).
 
 
 > Click on the arrow next to the **origin** and change the prior distribution from **Uniform** to **Gamma** with **Alpha** parameter set to 0.5 and **Beta** parameter set to 2.0 ([Figure 14](#originPrior)).
@@ -437,14 +438,14 @@ Now, all the specifications are done. We want to save and run the XML.
 
 ### Running the analysis
 
-> Within BEAST, specify the file Heterochronous.xml. 
+> Start **BEAST2** and choose the file `Heterochronous.xml`. 
 > 
-> If you have BEAGLE installed tick the box to **Use BEAGLE library if available**, which will make the run faster.
+> If you have **BEAGLE** installed tick the box to **Use BEAGLE library if available**, which will make the run faster.
 >
 > Hit **Run** to start the analysis.
 > 
 
-The run should take about 15-20 minutes. While waiting for your results, you can start preparing the XML file for the homochronous data.
+The run should take about 15-20 minutes. While waiting for your results, you can start preparing the XML file for the [homochronous](#homochronous) data.
 
 
 
@@ -452,7 +453,7 @@ The run should take about 15-20 minutes. While waiting for your results, you can
 ### Analysing the results
 
 
-> Load the file into **Tracer** to check mixing and the parameter estimates. 
+> Load the logfile into **Tracer** to check mixing and the parameter estimates. 
 > 
 
 <figure>
@@ -496,7 +497,7 @@ The estimated posterior distribution for the **becomeUninfectiousRate** has a me
 </figure>
 <br>
 
-We see that the sampling proportion ([Figure 20](#tracersampling)) is estimated to be below 5 {% eqinline \times %} 10^(-5). This a lot lower than the mean we set for the prior on the sampling proportion (0.001). Therefore our prior estimate of the sampling proportion was much too high. Consequently, we see that the number of cases is also much higher than we initially thought. We assumed that there are around 1,000 cases when we set the prior, however our posterior indicates that the epidemic has on the order of tens of thousands of cases. 
+We see that the sampling proportion ([Figure 20](#tracersampling)) is estimated to be below 5 {% eqinline \times %} 10^(-5). This a lot lower than the mean we set for the prior on the sampling proportion (0.001). Therefore our prior estimate of the sampling proportion was much too high. Consequently, we see that the number of cases was also much higher than we initially thought. We assumed that there were around 1,000 cases when we set the prior, however our posterior indicates that the epidemic had on the order of tens of thousands of cases. 
 
 <figure>
 	<a id="tracersampling"></a>
@@ -517,7 +518,7 @@ Looking at the clock rate estimates ([Figure 21](#tracerclockRate)) we see that 
 
 
 
-
+<a id="homochronous"></a>
 
 # Practical: H3N2 flu dynamics - Homochronous data
 
@@ -544,7 +545,7 @@ After the run is finished, load the log file into Tracer and examine the traces 
 > **Topic for discussion:** Do you think running the analysis for longer will lead to the run mixing well?
 > 
 
-Most of the parameters again have ESS values below 200, however in this case the ESS values are lower than for heterochronous data and it is not clear that running the analysis for longer will lead to mixing. Indeed, while running the analysis for longer increases increases the ESS values for some parameters, they remain low for some parameters, in particular the **origin**, **TreeHeight** (tMRCA) and **clockRate**. Low ESS values for these parameters in turn translate into low ESS values for the tree prior (**BirthDeathSkyContemporary**), prior and posterior. 
+Most of the parameters again have ESS values below 200, however in this case the ESS values are lower than for heterochronous data and it is not clear that running the analysis for longer will lead to mixing. Indeed, while running the analysis for longer increases the ESS values for some parameters, they remain low for others, in particular the **origin**, **TreeHeight** (tMRCA) and **clockRate**. Low ESS values for these parameters in turn translate into low ESS values for the tree prior (**BirthDeathSkyContemporary**), prior and posterior. 
 
 <figure>
 	<a id="tracerclocktrace2"></a>
@@ -562,7 +563,7 @@ Now, check the clock rate and the tree height parameters.
 > If not, how can you see that and where do you think might the problem be? Can we address this problem in our analysis? 
 > 
 
-Notice the values of the substitution rate estimates. From literature, one can read that influenza's HA gene has a substitution rate of about 10^(-3) substitutions per site per year {% cite jenkins2002 --file Prior-selection/master-refs %}. Our estimate of the clock rate is of the same order as this value, but has a very large confidence interval. Notice also, that the confidence interval of the tree height is very large [0.1305,2.7393].
+Notice the values of the substitution rate estimates. From literature, one can read that influenza has a substitution rate of about 10^(-3) substitutions per site per year {% cite jenkins2002 --file Prior-selection/master-refs %}. Our estimate of the clock rate is of the same order as this value, but has a very large credible interval. Notice also, that the credible interval of the tree height is very large [0.1305,2.7393].
 
 Another way to see that the homochronous sampling does not allow for the estimation of the clock rate is to observe a very strong negative correlation of the clock rate with the tree height.
 
@@ -580,19 +581,21 @@ Another way to see that the homochronous sampling does not allow for the estimat
 
 The correlation between the tree height and the clock rate is obvious: the taller the tree, the slower the clock. One way to solve this problem is to break this correlation by setting a strong prior on one of the two parameters. We describe how to set a prior on the tree height in the section below. 
 
+> **Topic for discussion:** Are any other pairs of parameters highly correlated? If so, should we be concerned about them?
+>
 
 
 
 ### Creating Taxon Sets
 
-We will use the results from the heterochronous data, to find out what a good estimate for the tree height of these homochronous samples is. For this aim, we first create an MCC (maximum clade credibility) tree in the **TreeAnnotator** and then check with **FigTree** what the estimate of the tMRCA (time to the most recent common ancestor) of the samples from April 28, 2009 is.
+We will use the results from the heterochronous data to find out what a good estimate for the tree height of these homochronous samples is. For this aim, we first create an MCC (maximum clade credibility) tree in the **TreeAnnotator** and then check with **FigTree** what the estimate of the tMRCA (time to the most recent common ancestor) of the samples from April 28, 2009 is.
 
-Note, however, that we do this for illustration purposes only. In good practice, one should avoid re-using the data or using the results of an analyses to inform any further analyses containing the same data. Let's pretend therefore that the heterochronous dataset is an independent dataset from the homochronous one. 
+Note, however, that we do this for illustrative purposes only. In good practice, one should avoid re-using the data or using the results of an analysis to inform any further analyses containing the same data. Let's pretend therefore that the heterochronous dataset is an independent dataset from the homochronous one. 
 
 
-> Open the **TreeAnnotator** and set **Burnin percentage** to 10, **Posterior probability limit** to 0.5. Leave the other options unchanged.
+> Open **TreeAnnotator** and set **Burnin percentage** to 10, **Posterior probability limit** to 0.5. Leave the other options unchanged.
 > 
-> Set the **Input Tree File** to `InfluenzaAH3N2_HAgene_2009_California_heterochronous.trees` and the **Output File** to `InfluenzaAH3N2_HAgene_2009_California_heterochronous.tree`. ([Figure 24](#treeAnnotator))
+> Set the **Input Tree File** to `InfluenzaAH3N2_HAgene_2009_California_heterochronous.trees` (or drag it across) and the **Output File** to `InfluenzaAH3N2_HAgene_2009_California_heterochronous.tree`. ([Figure 24](#treeAnnotator))
 > 
 
 <figure>
@@ -632,7 +635,7 @@ How can we find out what the tMRCA of our homochronous data may be? The best may
 <br>
 
 
-Notice, that since we are using only a subset of all the heterochronous sequences, we are interested in the tMRCA of the samples from April 28, 2009 which may not coincide with the tree height of all the heterochronous data. These samples are spread around over all the clades in the tree, and the most recent common ancestor of all of them turns out to be the root of the MCC tree of the heterochronous samples. We therefore want to set the tMRCA prior of the tree formed by the homochronous sequences to be peaked around the median value of the MCC tree height, which is 0.5488 and we want 95% of the density of the prior distribution to be between 0.5343-0.5603.
+Notice, that since we are using only a subset of all the heterochronous sequences, we are interested in the tMRCA of the samples from April 28, 2009 which may not coincide with the tree height of all the heterochronous data. These samples are spread around over all the clades in the tree, and the most recent common ancestor of all of them turns out to be the root of the MCC tree of the heterochronous samples. We therefore want to set the tMRCA prior of the tree formed by the homochronous sequences to be centered around the median value of the MCC tree height, which is 0.5488 and we want 95% of the density of the prior distribution to be between 0.5343-0.5603.
 
 
 > Open BEAUti, load the homochronous data and use the same settings as for the `Homochronous.xml` file.
@@ -713,7 +716,7 @@ Save the XML file as `Homochronous_tMRCA.xml` and run the analysis and compare t
 </figure>
 <br>
 
-We see that the heterochronous analysis has the tightest posterior estimates for the clock rate. Hence, it is clear that this dataset contains the most information about the clock rate. This is obvious, since this dataset not only contains sequences sampled across time, but it also contains many more sequences than the homochronous dataset. The marginal posterior for the clock rate estimated from homochronous data with a prior on the tMRCA approaches this distribution, however it is still more diffuse. On the other hand, the clock rate estimates made on the homochronous data without a tMRCA prior are very diffuse. It is important to note that these estimates are **not** wrong, but simply indicates that there is a lot of uncertainty in the data. Importantly, the true clock rate still falls within the 95% HPD of the estimated clock rate from homochronous data. If this were not the case then the estimates would be wrong. Thus, when there is not a lot of information in our data, it is always better to have an uncertain estimate that contains the truth than to have a very specific, but wrong estimate. 
+We see that the heterochronous analysis has the tightest posterior estimates for the clock rate. Hence, it is clear that this dataset contains the most information about the clock rate. This should be obvious, since this dataset not only contains sequences sampled across time, but it also contains many more sequences than the homochronous dataset. The marginal posterior for the clock rate estimated from homochronous data with a prior on the tMRCA approaches this distribution, however it is still more diffuse. On the other hand, the clock rate estimates made on the homochronous data without a tMRCA prior are very diffuse. It is important to note that these estimates are **not** wrong, but simply indicates that there is a lot of uncertainty in the data. Importantly, the true clock rate still falls within the 95% HPD of the estimated clock rate from homochronous data. If this were not the case then the estimates would be wrong. Thus, when there is not a lot of information in our data, it is always better to have an uncertain estimate that contains the truth than to have a very specific, but wrong estimate. 
 
 On the **TreeHeight** we see that the marginal posterior estimated from homochronous data with a tMRCA prior is almost identical to the marginal posterior estimated on heterochronous data. However, estimates on homochronous data without a tMRCA prior are very diffuse, because there is not enough information in the data to accurately date the tMRCA. 
 
