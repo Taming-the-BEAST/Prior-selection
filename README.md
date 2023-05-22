@@ -1,6 +1,6 @@
 ---
 author: "Veronika Bošková,Venelin Mitov,Louis du Plessis"
-beastversion: 2.5.2
+beastversion: 2.7.0
 tracerversion: 1.7.0
 figtreeversion: 1.4.4
 bdskyversion: 1.4.5
@@ -82,9 +82,7 @@ Before we can start we need to download the input data for the tutorial. The ful
 `InfluenzaAH3N2_HAgene_2009_California_heterochronous.nexus`). The homochronous data is a subset of the heterochronous data, consisting of an alignment of 29 sequences of 1735 nucleotides all sampled on April 28, 2009 (file named `InfluenzaAH3N2_HAgene_2009_California_homochronous.nexus`). 
 
 
-The alignment files can be downloaded from the Taming the BEAST website at [https://taming-the-beast.org/tutorials/Prior-selection/](https://taming-the-beast.org/tutorials/Prior-selection/) or from Github.
-
-> **Downloading from taming-the-beast.org**
+> **Downloading the input data**
 > 
 > Links to the alignment files, `InfluenzaAH3N2_HAgene_2009_California_heterochronous.nexus` and `InfluenzaAH3N2_HAgene_2009_California_homochronous.nexus`, are on the left-hand panel, under the heading **Data**.
 > **Right-click** on the link and select **"Save Link As..."** (Firefox and Chrome) or **"Download Linked File As..."** (Safari) and save the file to a convenient location on your local drive. Note that some browsers will automatically change the extension of the file from `.nexus` to `.nexus.txt`. If this is the case, simply rename the file again. 
@@ -94,17 +92,6 @@ The alignment files can be downloaded from the Taming the BEAST website at [http
 > In the same way you can also download example `.xml` files for the analyses in this tutorial, as well as _pre-cooked_ output `.log` and `.trees` files. We recommend only downloading these files to check your results or if you become seriously stuck.
 >
 
-<br>
-
-> **Downloading from Github**
->
-> If you navigate to the Github repository you can either download the raw data files directly from **Github** or clone/download the repository to your local drive.
->
-> Note that this tutorial is distributed under a **CC BY 4.0** license, which gives anyone the right to freely use (and modify) it, as long as appropriate credit is given and the updated material is licensed in the same fashion.
->
-
-
-
 
 ## Creating the analysis file with BEAUti
 
@@ -113,8 +100,6 @@ We will use BEAUti to select the priors and starting values for our analysis and
 
 > Begin by starting **BEAUti2**.
 > 
-
-
 
 
 ### Installing BEAST2 packages
@@ -211,10 +196,9 @@ You could specify the tip dates by hand, by clicking for each row (i.e. for each
 <br>
 
 
-You should now see that the tip ages have been filled in for all of the taxa and that the **Date** columns shows a number in form 2009.xyz and the **Height** column shows the number in form 0.abc (the height of the tip from present time, where present is 0.0).
+You should now see that the tip ages have been filled in for all of the taxa with the **Date (raw value)** columns showing the date strings extracted from the taxon names, and the **Age/Height** column showing numbers on the order of 0.1 (the age in years of each tip relative to the most recent sample).
 
 Now we are done with the data specification and we are about to start specifying models and priors for the model parameters. 
-
 
 
 
@@ -242,7 +226,6 @@ Now we have to decide whether we want to assume all of the sites to have been su
 Once again, a proper model comparison, i.e. comparing a model without gamma rate heterogeneity to a model with some number of gamma rate categories, should ideally be done. We do not have any independent information on whether Gamma rate categories are needed or not. Thus, we take our best guess in order not to bias our analyses. Since the data are the sequences of the HA (hemagglutinin) gene of influenza, we may want to allow for variation of the substitution rates between sites. Hemagglutinin is a surface protein on the virus and is under significant evolutionary pressure from the immune system of the host organism. It is not unrealistic to assume that some sites may be under more pressure to escape from the immune system.
 
 Let us therefore choose the HKY model with 4 gamma rate categories for the substitution rate. 
-
 
 > Change the **Gamma Category Count** to 4, make sure that the estimate box next to the **Shape** parameter of the Gamma distribution is ticked and set **Subst Model** to **HKY**. Make sure that both **Kappa** (the transition/transversion rate ratio) and **Frequencies** are estimated. ([Figure 6](#substitutionModel)) 
 > 
@@ -518,7 +501,7 @@ The run should take about 15-20 minutes. While waiting for your results, you can
 ### Analysing the results
 
 
-> Load the logfile into **Tracer** to check mixing and the parameter estimates. 
+> Load the `Heterochronous.log` file into **Tracer** to check mixing and the parameter estimates. 
 > 
 
 <figure>
@@ -736,17 +719,6 @@ The prior that we are specifying is the date (not the height) of the tMRCA of al
 	<figcaption>Figure 29: Specifying the root height prior.</figcaption>
 </figure>
 <br>
-
-
-We also need to change the names of the output files so that we do not overwrite the results of the previous analyses. Here we will do this by setting the
-trace log file name to `$(filebase).log` and the tree log file name to `$(filebase).$(tree).log`.  This is often a sensible thing to do as `$(filebase)` is
-replaced with the name of the XML file, so will always produce different log file names as long as the XML is different.
-
-
-> In the **MCMC** window, click on the arrow next to the **tracelog** and change the **File Name** to `$(filebase).log`.
-> 
-> Then, click on the arrow next to the **treelog** and change the **File Name** to `$(filebase).$(tree).log`.
-> 
 
 Save the XML file as `Homochronous_tMRCA.xml` and run the analysis and compare to the original analysis of the homochronous data. 
 
