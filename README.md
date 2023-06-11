@@ -26,7 +26,7 @@ In this tutorial we will explore how priors are selected and how molecular clock
 
 ### BEAST2 - Bayesian Evolutionary Analysis Sampling Trees
 
-BEAST2 is a free software package for Bayesian evolutionary analysis of molecular sequences using MCMC and strictly oriented toward inference using rooted, time-measured phylogenetic trees. This tutorial is written for BEAST v{{ page.beastversion }} {% cite Bouckaert2014 --file Prior-selection/master-refs %}, {% cite Bouckaert2019 --file Prior-selection/master-refs %}.
+BEAST2 is a free software package for Bayesian evolutionary analysis of molecular sequences using MCMC and strictly oriented toward inference using rooted, time-measured phylogenetic trees. This tutorial is written for BEAST v{{ page.beastversion }} {% cite Bouckaert2014 Bouckaert2019 --file Prior-selection/master-refs %}.
 
 
 ### BEAUti2 - Bayesian Evolutionary Analysis Utility
@@ -113,7 +113,7 @@ Since we will be using the birth-death skyline model (**BDSKY**) {% cite Stadler
 
 <figure>
 	<a id="packageManage1"></a>
-	<img style="width:75.0%;" src="figures/beast2_package_manager_opening.png" alt="">
+	<img style="width:25.0%;" src="figures/beast2_package_manager_opening.png" alt="">
 	<figcaption>Figure 1: Finding the BEAST2 Package Manager.</figcaption>
 </figure>
 <br>
