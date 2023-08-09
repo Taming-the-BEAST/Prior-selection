@@ -13,6 +13,8 @@ subtitle: Prior selection and clock calibration using Influenza A data.
 
 
 
+
+
 # Background
 
 In the Bayesian analysis of sequence data, priors play an important role. When priors are not specified correctly, it may cause runs to take a long time to converge, not converge at all or cause a bias in the inferred trees and model parameters. Specifying proper priors and starting values is crucial and can be a difficult exercise in the beginning. It is not always easy to pick a proper model of tree generation (tree prior), substitution model, molecular clock model or the prior distribution for an unknown parameter. 
@@ -125,7 +127,7 @@ Since we will be using the birth-death skyline model (**BDSKY**) {% cite Stadler
 
 <figure>
 	<a id="packageManage2"></a>
-	<img style="width:75.0%;" src="figures/beast2_package_manager.png" alt="">
+	<img src="figures/beast2_package_manager.png" alt="">
 	<figcaption>Figure 2: The BEAST2 Package Manager.</figcaption>
 </figure>
 <br>
@@ -151,7 +153,7 @@ We will first analyse the alignment of sequences sampled through time (heterochr
 
 <figure>
 	<a id="importAlignment"></a>
-	<img style="width:75.0%;" src="figures/beast2_import_alignment.png" alt="">
+	<img src="figures/beast2_import_alignment.png" alt="">
 	<figcaption>Figure 3: Importing the alignment into BEAUti.</figcaption>
 </figure>
 <br>
@@ -176,7 +178,7 @@ The sequence labels (headers in the FASTA file) contain sampling times specified
 
 <figure>
 	<a id="timeUnitsAndFlow"></a>
-	<img style="width:100.0%;" src="figures/beast2_time_specification.png" alt="">
+	<img src="figures/beast2_time_specification.png" alt="">
 	<figcaption>Figure 4: Specifying time units and direction of time flow.</figcaption>
 </figure>
 <br>
@@ -192,13 +194,13 @@ You could specify the tip dates by hand, by clicking for each row (i.e. for each
 
 <figure>
 	<a id="guessDates"></a>
-	<img style="width:50.0%;" src="figures/beast2_guess_dates.png" alt="">
+	<img style="width:75.0%;" src="figures/beast2_guess_dates.png" alt="">
 	<figcaption>Figure 5: Specifying tip dates.</figcaption>
 </figure>
 <br>
 
 
-You should now see that the tip ages have been filled in for all of the taxa with the **Date (raw value)** columns showing the date strings extracted from the taxon names, and the **Age/Height** column showing numbers on the order of 0.1 (the age in years of each tip relative to the most recent sample).
+You should now see that the tip ages have been filled in for all of the taxa with the **Date (raw value)** columns showing the date strings extracted from the taxon names, and the **Age/Height** column showing numbers on the order of 0.1 (the age in years of each tip relative to the most recent sample). If you did everything correctly, the sequence with the _most recent_ sampling date (2009/06/08) should have the samllest height (0.0 in this case).
 
 Now we are done with the data specification and we are about to start specifying models and priors for the model parameters. 
 
@@ -234,7 +236,7 @@ Let us therefore choose the HKY model with 4 gamma rate categories for the subst
 
 <figure>
 	<a id="substitutionModel"></a>
-	<img style="width:75.0%;" src="figures/beast2_substitution_model.png" alt="">
+	<img src="figures/beast2_substitution_model.png" alt="">
 	<figcaption>Figure 6: Specifying the substitution model.</figcaption>
 </figure>
 <br>
@@ -262,7 +264,7 @@ Since we are observing the sequence data from a single epidemic of H3N2 virus in
 
 <figure>
 	<a id="clockModel"></a>
-	<img style="width:75.0%;" src="figures/beast2_clock_model.png" alt="">
+	<img src="figures/beast2_clock_model.png" alt="">
 	<figcaption>Figure 7: Specifying the clock model.</figcaption>
 </figure>
 <br>
@@ -453,7 +455,7 @@ It is rarely necessary to specify a strong prior for equilibrium frequencies. Eq
 <figure>
 	<a id="freqPrior"></a>
 	<img  src="figures/beast2_prior_frequencies.png" alt="">
-	<figcaption>Figure 16: Specifying the equilibrium nucleotide frequencies prior.</figcaption>
+	<figcaption>Figure 16: Specifying the equilibrium nucleotide frequencies prior. As it is a multivariate distribution, BEAUti cannot plot it.</figcaption>
 </figure>
 <br>
 
