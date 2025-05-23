@@ -40,7 +40,7 @@ Both BEAST2 and BEAUti2 are Java programs, which means that the exact same code 
 
 ### TreeAnnotator
 
-TreeAnnotator is used to summarise the posterior sample of trees to produce a maximum clade credibility tree. It can also be used to summarise and visualise the posterior estimates of other tree parameters (e.g. node height).
+TreeAnnotator is used to produce a summary tree from the posterior sample of trees using one of the available algorithms. It can also be used to summarise and visualise the posterior estimates of other tree parameters (e.g. node height).
 
 TreeAnnotator is provided as a part of the BEAST2 package so you do not need to install it separately.
 
@@ -642,7 +642,7 @@ The correlation between the tree height and the clock rate is obvious: the talle
 
 ### Creating Taxon Sets
 
-We will use the results from the heterochronous data to find out what a good estimate for the tree height of these homochronous samples is. For this aim, we first create an MCC (maximum clade credibility) tree in **TreeAnnotator** and then check with **FigTree** what the estimate of the tMRCA (time to the most recent common ancestor) of the samples from April 28, 2009 is.
+We will use the results from the heterochronous data to find out what a good estimate for the tree height of these homochronous samples is. For this aim, we first create a summary tree in **TreeAnnotator**. In this case we will use the default MCC (maximum clade credibility) tree, but the steps below would be the same if we chose another summary tree (e.g. conditional clade credibility tree). Then we will check with **FigTree** what the estimate of the tMRCA (time to the most recent common ancestor) of the samples from April 28, 2009 is.
 
 Note, however, that we do this for illustrative purposes only. In good practice, one should avoid re-using the data or using the results of an analysis to inform any further analyses containing the same data. Let's pretend therefore that the heterochronous dataset is an independent dataset from the homochronous one. 
 
