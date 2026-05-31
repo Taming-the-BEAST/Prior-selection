@@ -428,7 +428,7 @@ We used an HKY model, with Gamma-distributed rate heterogeneity with 4 categorie
 
 _(The default priors for site models perform well in most scenarios and in practice rarely have to be changed. However, it is important not to forgot about them!)_
 
-The Gamma shape parameter governs the shape of the Gamma distribution of the rates across different sites. The default setting of the Gamma shape parameter of **alpha=beta=1.0** reflects our belief that on average, the rate scaler is equal to 1, i.e. on average all the sites mutate with the same substitution rate. The distribution on the gamma shape parameter allows us to deviate from this assumption. The default exponential distribution with **M** (mean) of 1.0 and 95%HPD of [0.0253,3.69] covers a wide range of possible shape parameters. This looks fine for our analysis, and thus, we leave the Gamma shape settings at its defaults ([Figure 14](#gammaShapeprior)).
+By default, the Gamma distribution of rates across different sites has a mean of one, reflecting our belief that **_on average_** all sites evolve with the same substitution rate. The Gamma shape parameter governs the shape of the Gamma distribution, with lower values indicating greater across-site rate variation. It allows us to control how substitution rates vary between sites. The default exponential distribution with **M** (mean) of 1.0 and 95%HPD of [0.0253,3.69] covers a wide range of possible shape parameters. This looks fine for our analysis, and thus, we leave the Gamma shape settings at its defaults ([Figure 14](#gammaShapeprior)).
  
 <figure>
 	<a id="gammaShapeprior"></a>
@@ -499,7 +499,9 @@ Now, all the specifications are done. We want to save and run the XML.
 > Hit **Run** to start the analysis.
 > 
 
-The run should take about 15-20 minutes. While waiting for your results, you can start preparing the XML file for the [homochronous](#homochronous) data.
+The run should take about 15-20 minutes. 
+
+**While waiting for your results, you can start preparing the XML file for the [homochronous](#homochronous) data.**
 
 
 
@@ -644,7 +646,7 @@ The correlation between the tree height and the clock rate is obvious: the talle
 
 We will use the results from the heterochronous data to find out what a good estimate for the tree height of these homochronous samples is. For this aim, we first create a summary tree in **TreeAnnotator**. In this case we will use the default MCC (maximum clade credibility) tree, but the steps below would be the same if we chose another summary tree (e.g. conditional clade credibility tree). Then we will check with **FigTree** what the estimate of the tMRCA (time to the most recent common ancestor) of the samples from April 28, 2009 is.
 
-Note, however, that we do this for illustrative purposes only. In good practice, one should avoid re-using the data or using the results of an analysis to inform any further analyses containing the same data. Let's pretend therefore that the heterochronous dataset is an independent dataset from the homochronous one. 
+Note, however, that we do this for illustrative purposes only. **_In good practice, one should avoid re-using the data or using the results of an analysis to inform any further analyses containing the same data._** Let's pretend therefore that the heterochronous dataset is an independent dataset from the homochronous one.
 
 
 > Open **TreeAnnotator** and set **Burnin percentage** to 10, **Posterior probability limit** to 0.5. Leave the other options unchanged.
@@ -714,7 +716,7 @@ The prior that we are specifying is the date (not the height) of the tMRCA of al
 
 > Back in the **Priors** window, check the box labeled **monophyletic** for the **allseq.prior**.
 > 
-> Click on the arrow next to the **allseq.prior**. Change the prior distribution on the time of the MRCA of selected sequences from **[none]** to **Laplace Distribution** and set the **Mu** to 2008.7745 and the **Scale** to 0.01 ([Figure 30](#tMRCAPrior2)). 
+> Click on the arrow next to the **allseq.prior**. Change the prior distribution on the time of the MRCA of selected sequences from **[none]** to **Laplace Distribution** and set the **Mu** to 2008.7745 and the **Scale** to 0.001 ([Figure 30](#tMRCAPrior2)). 
 > 
 > You can check that these settings correspond to the height of tMRCA from the MCC tree by setting **Mu** to 0.5488 and observing the distribution to the right. When you are done, do not forget to set **Mu** back to 2008.7745.
 > 
