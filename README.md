@@ -347,7 +347,7 @@ After we have specified the prior for {% eqinline R_e %}, the next prior that ne
 
 Looking at the 2.5% and 97.5% quantiles for the distribution we see that 95% of the weight of our becoming uninfectious rate prior falls between 4.44 and 224, i.e. our prior on the period of infectiousness is between {% eqinline \approx %} 1.63 and 82.2 days. Thus, our prior is quite diffuse. If we wanted to use a more specific prior we could decrease the standard deviation of the distribution (the **S** parameter).
 
-For the next parameter, the sampling proportion, we know that we certainly did not sample every single infected individual. Therefore, setting a prior close to 1 would not be reasonable. Actually, it is more reasonable to usually expect only a proportion of less than 0.1 of all flu cases to be sampled. Here, we specify something on the order of {% eqinline 10^{-3} %}. The default prior for the sampling proportion is a Beta distribution, which is only defined between 0 and 1, making it a natural choice for proportions. However, this is not the only prior that can be used, and here we specify a log-normal distribution, while ensuring that an appropriate upper limit is set, to prevent a sampling proportion higher than 1, which is not defined. 
+For the next parameter, the sampling proportion, we know that we certainly did not sample every single infected individual. Therefore, setting a prior close to 1 would not be reasonable. Actually, it is more reasonable to usually expect only a proportion of less than one in every 1,000 flu cases to be sampled. Here, we specify something on the order of {% eqinline 10^{-3} %}. The default prior for the sampling proportion is a Beta distribution, which is only defined between 0 and 1, making it a natural choice for proportions. However, this is not the only prior that can be used, and here we specify a log-normal distribution, while ensuring that an appropriate upper limit is set, to prevent a sampling proportion higher than 1, which is not defined. 
 
 
 > Click on the arrow next to the **samplingProportion** and change the distribution from **Beta** to **Log Normal**. 
@@ -553,7 +553,7 @@ The estimated posterior distribution for the **becomeUninfectiousRate** has a me
 </figure>
 <br>
 
-We see that the sampling proportion ([Figure 21](#tracersampling)) is estimated to be below {% eqinline 5 \times 10^{-5} %}. This a lot lower than the mean we set for the prior on the sampling proportion (0.001). Therefore our prior estimate of the sampling proportion was much too high. Consequently, we see that the number of cases was also much higher than we initially thought. We assumed that there were around 1,000 cases when we set the prior, however our posterior indicates that the epidemic had on the order of tens of thousands of cases. 
+We see that the sampling proportion ([Figure 21](#tracersampling)) is estimated to be below {% eqinline 5 \times 10^{-5} %}. This a lot lower than the mean we set for the prior on the sampling proportion ({% eqinline 10^{-3} %}). Therefore our prior estimate of the sampling proportion was much too high. Consequently, we see that the number of cases was also much higher than we initially thought. When we set the prior, we assumed that we sampled around one in every 1,000 cases, and the total number of cases is 139 * 1,000. However, our posterior indicates that the epidemic had on the order of millions of cases. 
 
 <figure>
 	<a id="tracersampling"></a>
@@ -716,7 +716,7 @@ The prior that we are specifying is the date (not the height) of the tMRCA of al
 
 > Back in the **Priors** window, check the box labeled **monophyletic** for the **allseq.prior**.
 > 
-> Click on the arrow next to the **allseq.prior**. Change the prior distribution on the time of the MRCA of selected sequences from **[none]** to **Laplace Distribution** and set the **Mu** to 2008.7745 and the **Scale** to 0.001 ([Figure 30](#tMRCAPrior2)). 
+> Click on the arrow next to the **allseq.prior**. Change the prior distribution on the time of the MRCA of selected sequences from **[none]** to **Laplace Distribution** and set the **Mu** to 2008.7745 and the **Scale** to 0.01 ([Figure 30](#tMRCAPrior2)). 
 > 
 > You can check that these settings correspond to the height of tMRCA from the MCC tree by setting **Mu** to 0.5488 and observing the distribution to the right. When you are done, do not forget to set **Mu** back to 2008.7745.
 > 
