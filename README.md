@@ -1,13 +1,24 @@
 ---
-author: "Veronika Bošková,Venelin Mitov,Louis du Plessis"
-beastversion: 2.7.x
+author: Veronika Bošková,Venelin Mitov,Louis du Plessis
 tracerversion: 1.7.x
 figtreeversion: 1.4.x
 bdskyversion: 1.5.0
 layout: tutorial
-level: Beginner
 title: Prior-selection
 subtitle: Prior selection and clock calibration using Influenza A data.
+beastversion_tutorial: 2.7.x
+workflow: Basic workflow
+status: current
+keywords:
+- priors
+- molecular clock
+- calibration
+- tip dating
+packages:
+- BDSKY
+domains:
+- epidemiology
+beastversion_package: '2.7'
 ---
 
 
